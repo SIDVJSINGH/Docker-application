@@ -1,0 +1,250 @@
+<body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark  fixed-top" style="background-color:black;">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="#">
+            <img src="assets/logo/logosurvey.png" alt="Logo" class="logo-image" style="width: 180px;">
+        </a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"
+            style="margin-left: -18px;">
+            <i class="fas fa-bars" style="color: white;"></i>
+        </button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <!-- <div class="input-group">
+              <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+              <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+          </div> -->
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="color: whitesmoke;">{{name}}&nbsp;{{lname}}
+                    <!-- <i class="fas fa-user fa-fw"></i> -->
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <!-- <li><a class="dropdown-item" href="#!">Settings</a></li> -->
+                    <!-- <li><a class="dropdown-item" href="#!">Activity Log</a></li> -->
+                    <!-- <li><hr class="dropdown-divider" /></li> -->
+                    <li><a class="dropdown-item" [routerLink]="['/main/profile']"><i class="fas fa-user-alt"
+                                style="color: rgb(177, 152, 12);cursor: pointer;" aria-hidden="true"></i>
+                            Profile</a></li>
+                    <li><a class="dropdown-item" (click)="logOut()"><i class="fa fa-sign-out"
+                                style="color: rgb(177, 152, 12);cursor: pointer;" aria-hidden="true"></i>
+                            Logout</a></li>
+                </ul>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav" style="padding-top: 6px;">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
+                        <a class="nav-link" routerLinkActive="active" [routerLink]="['/main/dashboard']"
+                            style="color: whitesmoke;">
+                            <div class="sb-nav-link-icon" style="color: rgb(177, 152, 12)">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <!-- <i class="bi bi-grid"></i> -->
+                                <!-- <i class="bi bi-grid-fill"></i> -->
+                            </div><b>
+                                Dashboard</b>
+                        </a>
+
+                        <a class="nav-link" routerLinkActive="active" [routerLink]="['/main/profile']"
+                            style="color: whitesmoke;">
+                            <div class="sb-nav-link-icon" style="color: rgb(177, 152, 12)"><i
+                                    class='fas fa-user-alt'></i></div>
+                            Profile Management
+                        </a>
+                        <a class="nav-link" [routerLink]="['/main/user']" style="color: whitesmoke;"
+                            routerLinkActive="active">
+                            <div class="sb-nav-link-icon" style="color: rgb(177, 152, 12)"><i
+                                    class='fas fa-user-friends'></i></div>
+                            User Management
+                        </a>
+                        <a class="nav-link" [routerLink]="['/main/adminuser']" style="color: whitesmoke;"
+                        routerLinkActive="active">
+                        <div class="sb-nav-link-icon" style="color: rgb(177, 152, 12)"><i
+                                class='fas fa-user-friends'></i></div>
+                        Admin Management
+                    </a>
+                        <!-- <a class="nav-link" href="index.html" [routerLink]="['/main/surveytempl']" style="color: whitesmoke;">
+                            <div class="sb-nav-link-icon" style="color: rgb(177, 152, 12)"><i class="fas fa-tasks"></i></div>
+                            Survey Template Management
+                        </a> -->
+                        <!-- <a class="nav-link" href="index.html" [routerLink]="['/main/category']" style="color: whitesmoke;">
+                            <div class="sb-nav-link-icon" style="color: rgb(177, 152, 12)"><i class="fa fa-users" aria-hidden="true"></i></div>
+                            Category Management
+                        </a> -->
+                        <!-- <a class="nav-link" routerLinkActive="active" [routerLink]="['/main/surveyform']" style="color: whitesmoke;">
+                            <div class="sb-nav-link-icon" style="color: rgb(177, 152, 12)"> <i class="fas fa-poll"></i></div>
+                            Survey Management
+                        </a>  -->
+                        <a class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
+                            style="color: whitesmoke; " aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon " style="color: rgb(177, 152, 12)"><i
+                                    class="fas fa-columns"></i></div>
+                            Survey Management
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" [routerLink]="['/main/surveytype']" routerLinkActive="active">Survey
+                                    Type</a>
+                                <a class="nav-link" routerLinkActive="active"
+                                    [routerLink]="['/main/surveycategory']">Survey Category</a>
+                                <a class="nav-link" [routerLink]="['/main/surveyform']" routerLinkActive="active">Survey
+                                    Form</a>
+
+
+                            </nav>
+                        </div>
+
+
+                        <a class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseLayouts12"
+                        style="color: whitesmoke; " aria-expanded="false" aria-controls="collapseLayouts12">
+                        <div class="sb-nav-link-icon " style="color: rgb(177, 152, 12)"><i
+                                class="fas fa-tasks"></i></div>
+                                Options Management
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                        <div class="collapse" id="collapseLayouts12" aria-labelledby="headingOne"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" [routerLink]="['/main/athletics']" routerLinkActive="active">Athletics</a>
+                            <a class="nav-link" [routerLink]="['/main/ethnicity']" routerLinkActive="active">Ethnicity</a>
+                            
+                            <a class="nav-link" [routerLink]="['/main/income']" routerLinkActive="active">Income</a>
+                           
+                            <a class="nav-link" [routerLink]="['/main/party']" routerLinkActive="active">Party</a>
+                            <a class="nav-link" [routerLink]="['/main/race']" routerLinkActive="active">Race</a>
+                            <a class="nav-link" [routerLink]="['/main/sports']" routerLinkActive="active">Sports</a>
+                           
+                           <a class="nav-link" [routerLink]="['/main/options']" routerLinkActive="active">State</a>
+    
+    
+                        </nav>
+                    </div>
+                        <a class="nav-link" [routerLink]="['/main/cms']" style="color: whitesmoke;"
+                            routerLinkActive="active">
+                            <div class="sb-nav-link-icon" style="color: rgb(177, 152, 12)"> <i class="fas fa-tasks"></i>
+                            </div>
+                            CMS
+                        </a>
+                        <a class="nav-link" [routerLink]="['/main/usercontact']" style="color: whitesmoke;"
+                            routerLinkActive="active">
+                            <div class="sb-nav-link-icon" style="color: rgb(177, 152, 12)"> <i class="fa fa-address-book"></i>
+                            </div>
+                            User Contact
+                        </a>
+                      
+                   
+                     
+                        <a class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1"
+                        style="color: whitesmoke; " aria-expanded="false" aria-controls="collapseLayouts1">
+                        <div class="sb-nav-link-icon " style="color: rgb(177, 152, 12)"><i
+                                class="fa fa-gear fa-spin"></i></div>
+                       Settings
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                        <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" [routerLink]="['/main/settings']" routerLinkActive="active">Site Settings</a>
+                            <!-- <a class="nav-link" routerLinkActive="active"
+                                [routerLink]="['/main/options']">Options Management</a> -->
+                           
+
+
+                        </nav>
+                    </div>
+                        <!-- <a class="nav-link" href="index.html" [routerLink]="['/main/rewards']" style="color: whitesmoke;">
+                            <div class="sb-nav-link-icon" style="color: rgb(177, 152, 12)"><i class="fa-solid fa-trophy"></i></div>
+                            Manage Rewards
+                        </a>
+                        <a class="nav-link" href="tables.html" [routerLink]="['/main/notification']" style="color: whitesmoke;">
+                            <div class="sb-nav-link-icon" style="color: rgb(177, 152, 12)"><i class="fas fa-bell"></i></div>
+                            Notifications
+                        </a> -->
+                        <!-- <a class="nav-link" href="tables.html" style="color: whitesmoke;">
+                            <div class="sb-nav-link-icon" style="color: rgb(177, 152, 12)"><i class="fa fa-bar-chart" aria-hidden="true"></i></div>
+                            Data Analysis & Reports
+                        </a> -->
+                        <a class="nav-link" routerLinkActive="active" style="color: whitesmoke;" (click)="logOut()">
+                            <div class="sb-nav-link-icon" style="color: rgb(177, 152, 12)"><i class="fa fa-sign-out"
+                                    aria-hidden="true"></i></div>
+                            Logout
+                        </a>
+
+
+
+
+
+                        <!-- <div class="sb-sidenav-menu-heading">Interface</div> -->
+                        <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Pages
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a> -->
+                        <!-- <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link">Contact us</a>
+                                <a class="nav-link">About</a>
+
+
+                            </nav>
+                        </div> -->
+
+                        <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                          <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                          Pages
+                          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                      </a>
+                      <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                          <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                  Authentication
+                                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                              </a>
+                              <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                  <nav class="sb-sidenav-menu-nested nav">
+                                      <a class="nav-link" href="login.html">Login</a>
+                                      <a class="nav-link" href="register.html">Register</a>
+                                      <a class="nav-link" href="password.html">Forgot Password</a>
+                                  </nav>
+                              </div>
+                              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                  Error
+                                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                              </a>
+                              <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                  <nav class="sb-sidenav-menu-nested nav">
+                                      <a class="nav-link" href="401.html">401 Page</a>
+                                      <a class="nav-link" href="404.html">404 Page</a>
+                                      <a class="nav-link" href="500.html">500 Page</a>
+                                  </nav>
+                              </div>
+                              
+                          </nav>
+                      </div> -->
+
+
+
+                    </div>
+                </div>
+                <!-- <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                    Admin
+                </div> -->
+            </nav>
+        </div>
+        <div id="layoutSidenav_content" style="background-color: #def0fb;">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,61 @@
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+/* td, th {
+  width: 25%;
+} */
+
+.Inactive {
+  color: red;
+}
+
+.example-button-row .btn-save{
+  width: 100px;
+  margin-bottom: 16px;
+}
+
+.Active {
+  color: green;
+
+}
+
+/* .btn .dropdown-toggle-custom{
+  background-color: rgb(185, 176, 176);
+  text-align: left;
+  width: 500px;
+} */
+.form-group .btn-save{
+  width: 120px;
+}
+.custom-labelwidth{
+  width: 15%;
+  margin-top: 5px;
+}
+.custom-labelwidth-left{
+  width: 15%;
+
+}
+.customwidth{
+  width: 80% !important;
+}
+/* .custom-range-width{
+  margin-left: 3px;
+} */
+.customize-left{
+  margin-left: 300px;
+}
+
+.customize-input-top{
+  margin-top: 8px;
+  display: flex;
+
+}
+.modal-header{
+  height: 10px;
+}

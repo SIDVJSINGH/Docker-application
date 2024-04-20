@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<div class="login_box_outer">
+  <div class="login_box">
+
+    <button mat-mini-fab class="btn-cancel" (click)="onBack()">
+      <span class="material-icons"> arrow_back </span>
+    </button>
+    <!-- <img src="https://www.pakainfo.com/wp-content/uploads/2021/09/sample-image-url-link-300x300.png" alt="Logo" class="logo-image"> -->
+    <img src="assets/logo/logosurvey.png" alt="Logo" class="logo-image" style="margin-left: 20px; margin-top: 10px;">
+
+    <div class="title">
+      <h2><i class="fa fa-unlock fa-4x" style="height: 50px; width: auto;"></i></h2>
+      <h2>Reset password</h2>
+      <h3>Please enter new password</h3>
+    </div>
+
+    <form [formGroup]="changepasswordForm">
+      <p>
+        <mat-form-field class="field from" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+          <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" class="iconbutton">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="field from" appearance="outline">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="confirmPassword">
+          <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" class="iconbutton">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+      </p>
+
+      <!-- Display the error message only when confirmPassword is touched -->
+      <div *ngIf="changepasswordForm.get('confirmPassword').touched && changepasswordForm.hasError('passwordMismatch')">
+        <p class="text-danger">Passwords do not match.</p>
+      </div>
+
+
+
+      <div class="button-container">
+        <button mat-button class="btn-save w-100" [disabled]="changepasswordForm.invalid"
+          (click)="onreset()">SAVE</button>
+      </div>
+      <!-- <button    [disabled]="loginForm.invalid">Login</button> -->
+    </form>
+  </div>
+
+</div>

@@ -1,0 +1,22 @@
+.col-lg-3{
+    width: 17%;
+}
+.custom-label-width{
+    padding-top: 5px;
+    text-align: center;
+    
+}
+.form-group2 .btn-save{
+    width: 120px;
+}
+.form-group2 .btn-cancel{
+    width: 120px;
+}
+.form-group2{
+    float: right;
+    right: 90px;
+    position: fixed;
+}
+.custom-width-roght{
+    width: 78%;
+}

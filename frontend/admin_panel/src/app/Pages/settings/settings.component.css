@@ -1,0 +1,104 @@
+
+
+img{
+    height: 20px;
+    width: 20px;
+  }
+  .search-container{
+    display: flex;
+    justify-content: space-around;
+  }
+  .search-container .search-query{
+    flex: 1;
+  }
+  .search-container .search-date-container{
+    flex: 1;
+    display: flex;
+  }
+  .search-btn{
+    align-self: center;
+  }
+  
+  
+  .wrapperOuter{
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+  
+  }
+  .wrapper{
+    width: 100%;
+    height: 100%;
+    padding: 35px;
+    background: #fff;
+    box-shadow: 2px 2px 12px rgba(0, 0,0, 0.1),-1px -1px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  .wrapper h2.title {
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 30px;
+  }
+  
+  
+    table {
+        width: 100%;
+      }
+      
+   
+      
+      .mat-mdc-form-field {
+        font-size: 14px;
+        width: 100%;
+      }
+      
+    
+      .mat-header-cell{
+        background-color: #163813;
+      }
+         
+      .actionBtn{
+        cursor: pointer;
+        
+    }
+    /* Your component's CSS file */
+  .mat-header-cell, .mat-cell {
+    vertical-align: middle; /* Adjust as needed */
+  }
+  
+    .mat-mdc-table .mdc-data-table__header-row {
+        background: grey;
+     
+    }
+    .mdc-data-table__header-cell {
+        color: rgba(253, 249, 249, 0.87);
+        font-weight: bold;
+        font-size: 14px; 
+      }
+   
+  
+  .mat-icon:hover {
+    color: red; 
+  }
+  
+  
+  .mat-icon:active {
+    color: blue; 
+  }
+  /* Green text color class */
+  .status-green {
+    color: green;
+  }
+  
+  /* Red text color class */
+  .status-red {
+    color: red;
+  }
+  
+  
+  .btn-save{
+    width: 120px;
+  }

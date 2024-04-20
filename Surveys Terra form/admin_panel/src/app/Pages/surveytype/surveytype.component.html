@@ -1,0 +1,242 @@
+<h2><b>All Survey Type </b></h2>
+
+<div class="example-button-row" style="float: right;">
+  <button type="button" mat-button class="btn-save" data-bs-toggle="modal" data-bs-target="#exampleModal">+Create</button>
+</div>
+<br>
+<br>
+<mat-form-field class="search-query">
+  <input matInput type="text" (keyup)="applyFilter($event)" placeholder="search.." #input style="margin-left: 5px;" />
+  <button *ngIf="input.value" matSuffix mat-icon-button aria-label="Clear" (click)="onclear(input)">
+    <mat-icon color="primary">close</mat-icon>
+  </button>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;"> Sl </th>
+        <td mat-cell *matCellDef="let element; let i = index"> {{ getAdjustedIndex(i+1) }}</td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="profilepic">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: grey; color: white;">Image</th>
+        <td mat-cell *matCellDef="let element">
+          <ng-container>
+            <img src="{{element.image}}" alt="Image" style="height: 50px; width: 50px; border-radius: 50%; margin-left: -10px;"> -->
+            <!-- <img src="assets/logo/defaultlogo5.png" alt="" style="height: 45px; width: 45px; border-radius: 30px; margin-left: -10px;"> -->
+  
+          <!-- </ng-container> -->
+         <!-- <ng-container *ngIf="!element.image">
+            <ngx-avatars [size]="50" [name]="element.firstName + ' ' + element.lastName"
+              bgColor="#3366FF"></ngx-avatars>
+          </ng-container> -->
+        <!-- </td>
+      </ng-container> -->
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;">Type Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.type_name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: grey; color: white;">Status</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="option_b">
+  
+            <button mat-icon-button color="warn" *ngIf="element.isActive==false">
+              <mat-icon aria-hidden="false" aria-label="Block" fontIcon="block"></mat-icon>
+            </button>
+            <button mat-icon-button color="primary" *ngIf="element.isActive==true">
+              <mat-icon style="color: rgb(71, 235, 134);">done_outline</mat-icon>
+            </button>
+          </div>
+        </td>
+  
+      </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;">Created Date</th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;">EndDate</th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;">Status</th>
+      <td mat-cell *matCellDef="let element" [ngClass]="{
+                'Active': element.status === 'Active',
+                'Inactive': element.status === 'Inactive',
+              }"> {{element.status}} </td>
+    </ng-container> -->
+
+   
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;"> Action </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="onViewItem(element)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <!-- <mat-icon>dialpad</mat-icon> -->
+              <span>View</span>
+            </button>
+            <button mat-menu-item (click)="onEdit(element._id)">
+              <!-- <mat-icon>voicemail</mat-icon> -->
+              <span>Edit</span>
+            </button>
+            <button mat-menu-item (click)="onDelete(element)">
+              <!-- <mat-icon>notifications_off</mat-icon> -->
+              <span>Delete</span>
+            </button>
+  
+          </mat-menu>
+  
+  
+        </td>
+      </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10,20,30]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+
+
+
+
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <h2>Create Survey Type</h2>
+
+          <form [formGroup]="surveyForm">
+            <!-- <div class="form-group" style="display: flex; margin: 5px;">
+              <label class="col-lg-3">Image:</label>
+              <div class="col-lg-8"> -->
+              <!-- <div class="text-center"> -->
+                <!-- <label class="col-lg-3" for="fileInput" id="icon" >
+                    
+                    <div class="col-lg-8">
+                      <button style="background-color: rgb(200, 206, 206); border-radius: 15px; width: 494px;">
+                    <input  type='file' id="fileInput" 
+                        (change)="image1($event)" style="float: left;"></button>
+                        </div>
+                </label> -->
+
+            <!-- </div> -->
+
+            <!-- </div>
+          </div> -->
+            <!-- <div class="form-group">
+              <label> Type Name:</label><br>
+              <input type="text" class="form-control" formControlName="type_name" placeholder="enter the type name">
+            </div> -->
+            <div class="form-group" style="display: flex; margin: 5px;">
+              <label class="col-lg-3 custom-type-pa_to">Type:</label>
+              <div class="col-lg-8">
+              <input type="text" class="form-control custom-input-design" formControlName="type_name" placeholder="enter the type name"></div>
+            </div>
+            <br>
+            <div class="form-group">
+              <button class="btn btn-md btn-save" [disabled]="surveyForm.invalid"  (click)="onAddSurveyType()">Save</button>
+              
+              <button class="btn btn-md btn-cancel" data-bs-dismiss="modal" id="bootstrapClose" style="visibility: hidden;"
+                >Close</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5> -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <section class="table table-responsive">
+
+          <table class="table table-striped table-hover table-bordered">
+
+            <tbody>
+              <!-- <tr>
+                <td>Image</td>
+                <td><img src="{{userData.image}}" alt="" style="height: 50px; width: 50px; border-radius: 30%"></td>
+              </tr> -->
+              <!-- <tr>
+                <td>Status</td>
+                <td [ngClass]="{
+                  'Active': userData.status === 'Active',
+                  'Inactive': userData.status === 'Inactive',
+                }">{{userData.status}}</td>
+              </tr> -->
+              <tr>
+                <td>Type Name</td>
+                <td>{{userData.type_name}}</td>
+              </tr>
+              <tr>
+                <td>Status</td>
+                <td>
+                    <div class="option_b">
+            
+                      <button mat-icon-button color="warn" *ngIf="userData.isActive==false">
+                        <mat-icon aria-hidden="false" aria-label="Block" fontIcon="block"></mat-icon>
+                      </button>
+                      <button mat-icon-button color="primary" *ngIf="userData.isActive==true">
+                        <mat-icon style="color: rgb(71, 235, 134);">done_outline</mat-icon>
+                      </button>
+                    </div>
+                  
+                </td>         
+                 </tr>
+              <!-- <tr>
+                <td>End Date</td>
+                <td>{{userData.symbol}}</td>
+              </tr> -->
+
+            </tbody>
+          </table>
+
+        </section>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div> -->
+    </div>
+  </div>
+</div>

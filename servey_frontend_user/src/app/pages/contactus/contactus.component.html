@@ -1,0 +1,63 @@
+<app-common-template>
+    <main class="contact-us">
+        <mat-card class="map-wrap">
+            <span class="banner_wrap">
+                <mat-card-title class="contact-us-title">Contact Us</mat-card-title>
+            </span>
+        </mat-card>
+
+        <section class="container">
+            <mat-card class="cont-file-wrap">
+                <span class="cont-file-left">
+                    <mat-card-title>Let's get in touch</mat-card-title>
+                    <p class="cont-items">
+                        <img src="assets/img/location_Icon.png" />
+                        <label>1600 Amphitheatre Pkwy, Ca, sa, 94043</label>
+                    </p>
+                    <p class="cont-items">
+                        <img src="assets/img/email_Icon.png" />
+                        <label>Contact@surveysterra.com</label>
+
+                    </p>
+                    <p class="shortDesc">You can get in touch ... Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Odit facilis excepturi
+                        illo, est quis optio sequi enim ullam cupiditate quo.</p>
+                </span>
+
+                <span class="cont-file-right">
+
+                    <form [formGroup]="form">
+                        <span class="row">
+                            <span class="col-lg-6 mb-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Name</mat-label>
+                                    <input type="text" matInput placeholder="Enter your name" formControlName="name">
+                                </mat-form-field>
+                            </span>
+                            <span class="col-lg-6 mb-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Email</mat-label>
+                                    <input type="email" matInput placeholder="Ex. pat@example.com"
+                                        formControlName="email">
+                                </mat-form-field>
+                            </span>
+                            <span class="col-lg-12 mb-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Message</mat-label>
+                                    <textarea rows="5" formControlName="message" matInput
+                                        placeholder="Type your message ...."></textarea>
+                                </mat-form-field>
+                            </span>
+                            <span class="col-lg-12">
+                                <button class="btn-primary" mat-button (click)="oncontact()">Send message</button>
+                            </span>
+
+                        </span>
+                    </form>
+                </span>
+            </mat-card>
+        </section>
+
+    </main>
+
+</app-common-template>

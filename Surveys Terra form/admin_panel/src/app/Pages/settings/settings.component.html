@@ -1,0 +1,44 @@
+<!-- <ngx-spinner type="ball-scale-multiple"></ngx-spinner> -->
+
+
+
+
+
+
+<div class="wrapperOuter ">
+    <h2 class="title">Update your social media link </h2>
+    <form class="mt-4" [formGroup]="form">
+
+
+
+
+        <div class="edit_form">
+            <mat-form-field class="full-width " appearance="outline">
+                <mat-label><img src="assets/img/linkedin_Icon.png" alt=" linkedinIcon" class="img-responsive" /> Linkdin
+                    link</mat-label>
+                <input matInput formControlName="linkedin_link" />
+
+            </mat-form-field>
+        </div>
+
+        <div class="edit_form">
+            <mat-form-field class="full-width" appearance="outline">
+
+                <mat-label><img src="assets/img/thread_Icon.png" alt="linkedinIcon" class="img-responsive" /> Threads
+                    link</mat-label>
+
+                <input matInput formControlName="threads_link" />
+
+            </mat-form-field>
+
+        </div>
+        <div class="example-button-row" style="text-align: center;">
+            <button type="button" class="btn-save" mat-button class="btn-save" [disabled]="form.invalid"
+                (click)="onSubmit()">SAVE</button>
+
+
+
+        </div>
+
+    </form>
+</div>

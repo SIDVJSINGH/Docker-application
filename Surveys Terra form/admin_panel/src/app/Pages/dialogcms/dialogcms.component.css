@@ -1,0 +1,38 @@
+.update_btn{
+    margin-top: 10px;
+}
+::ng-deep .second-toolbar{
+        display: none !important;
+}
+.full-width{
+    width: 100%;
+}
+.example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+    
+  }
+  
+ 
+  .example-button-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  
+  .example-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+  .mat-dialog-actions {
+    flex-direction: row-reverse;
+}

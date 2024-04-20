@@ -1,0 +1,19 @@
+
+# Dependency directories
+node_modules
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+
+src/uploads/user-profile-image/*
+src/uploads/survey-category-image/*
+requests.rest
+request.rest
+client
+# src/config/config.js
+# src/app.js
+# src/index.js

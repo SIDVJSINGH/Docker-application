@@ -1,0 +1,157 @@
+<div class="container-fluid">
+  <h2><b>Edit Survey Form</b></h2>
+
+  <form [formGroup]="surveyForm" #updateData>
+    <!-- <div class="form-group">
+      <label>Image</label>
+      <img src="assets/logo/defaultlogo5.png" alt="" style="height: 60px; width: 60px; border-radius: 30px; margin-left: -10px;">
+    </div> -->
+    <div class="form-group" style="display: flex; margin: 5px;">
+      <label class="col-lg-3">Image:</label>
+      <div class="col-lg-8">
+      <!-- <div class="text-center"> -->
+      
+
+
+        <label class=" col-lg-3 hoverable" for="fileInput" id="icon">
+          <img  [src]="url?url:backendImageUrl||imageUrl1" alt="#"  class="avatar img-circle img-thumbnail">
+         
+          <!-- <img class="avatar img-circle img-thumbnail" *ngIf="profile_image!=''" [src]="profile_image">
+          <img class="avatar img-circle img-thumbnail" *ngIf="profile_image==''" src="/assets/logo/defaultlogo5.png" alt=""> -->
+
+          <!-- <img class="avatar img-circle img-thumbnail" src="/assets/logo/defaultlogo5.png"> -->
+
+          <i class="fas fa-pencil-alt" style="position: absolute; right: 15px; top: 1px; "></i>
+          <br><br>
+          <input type='file' hidden id="fileInput" (change)="image1($event)">
+      </label>
+    <!-- </div> -->
+    </div>
+  </div>
+    <div class="form-group" style="display: flex; margin: 5px;">
+      <label class="col-lg-3">Title:</label>
+      <div class="col-lg-8">
+      <input type="text" class="form-control" formControlName="title" placeholder="enter the name"></div>
+    </div>
+    <div class="form-group" style="display: flex; margin: 5px;">
+      <label class="col-lg-3">Description:</label>
+      <div class="col-lg-8">
+      <input type="text" class="form-control" formControlName="survey_description" placeholder="Description....."></div>
+    </div>
+
+    <div class="form-group" style="display: flex; margin: 5px;">
+      <label class="col-lg-3 custom-labelwidth">Type:</label>
+      <div class="col-lg-8 customwidth">
+        <select formControlName="survey_type_id" class="form-control" name="survey_type_id">
+          <option value="" hidden  >Select a Type</option>       
+             <option *ngFor="let item of typelist" aria-placeholder="Select an type" [value]="item._id">
+            {{item.type_name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group" style="display: flex; margin: 5px;">
+      <label class="col-lg-3 custom-labelwidth">Category:</label>
+      <div class="col-lg-8 customwidth">
+        <select formControlName="survey_category" class="form-control" name="survey_category">
+          <option value="" hidden>Select a Category</option>
+          <option *ngFor="let item of tagList" [value]="item._id">{{ item.tag_name }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group" style="display: flex; margin: 5px;">
+      <label class="col-lg-3 custom-labelwidth-left">Age Range:</label>
+      <div class="col-lg-8 customwidth form-control">
+        Min age range: <input #lim1 type="range" formControlName="min_age_range" min="16" max="100"
+          (change)="showVal1(lim1)" name="range1">
+        <small>{{surveyForm.value.min_age_range}}</small>&nbsp; &nbsp; &nbsp; &nbsp;
+        Max age range: <input #lim2 type="range" formControlName="max_age_range" min="16" max="100"
+          (change)="showVal2(lim2)" name="range2">
+        <small>{{surveyForm.value.max_age_range}}</small>
+        <div *ngIf="surveyForm.hasError('ageRangeInvalid')">
+          <p style="color: rgb(243, 86, 86);">Minimum age cannot be greater than or equal to maximum age.</p>
+        </div>
+      </div>
+  
+      
+    </div>
+    <!-- <div class="form-group" style="display: flex; margin: 5px;">
+      <label class="col-lg-3">Category:</label> -->
+     <!-- <div class="col-lg-8">
+      <input type="text" class="form-control" formControlName="survey_category" placeholder="Enter the category name"> -->
+      <!-- <div class="col-lg-8">
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 668px; background-color: white; text-align: left;">
+            Select the category
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+    </div>
+    </div> -->
+    <div class="form-group" style="display: flex; margin: 5px;">
+      <label class="col-lg-3">Created Date:</label>
+      <div class="col-lg-8">
+      <input type="datetime-local" class="form-control" formControlName="start_date_time" placeholder="Enter the created date">
+      <div *ngIf="surveyForm.get('start_date_time')?.hasError('pastDate')">
+        <p style="color: red;">Please choose a date in the present or future.</p> 
+      </div></div>
+    </div>
+    <div class="form-group" style="display: flex; margin: 5px;">
+      <label class="col-lg-3">End Date:</label>
+      <div class="col-lg-8">
+      <input type="datetime-local"  class="form-control" formControlName="end_date_time" placeholder="Enter the end date">
+      <div *ngIf="surveyForm.get('end_date_time')?.hasError('pastDate')">
+        <p style="color: red;">Please choose a date in the present or future.</p> 
+      </div></div>
+    </div>
+    
+    <div class="form-group" style="display: flex; margin: 5px;">
+      <label class="col-lg-3">Completed Time:</label>
+      <div class="col-lg-8">
+      <input type="text" class="form-control" formControlName="complete_time" placeholder="Enter test duration"></div>
+    </div>
+    <!-- <div class="form-group">
+      <label>Status</label>
+      <input type="text" class="form-control" formControlName="">
+    </div> -->
+    <div class="form-group" style="display: flex; margin: 5px;">
+      <label class="col-lg-3">URL:</label>
+      <div class="col-lg-8">
+    <input type="text" class="form-control" formControlName="url" placeholder="Paste the url"></div>
+    </div>
+
+    
+    <!-- <div class="form-group" style="display: flex; margin: 5px;">
+        <label class="col-lg-3">Status:</label>
+        <div class="col-lg-8">
+
+        <button mat-icon-button color="warn" *ngIf="userData.isStatusComplete==false">
+          <mat-icon aria-hidden="false" aria-label="Block" fontIcon="block">done_outline</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" *ngIf="userData.isStatusComplete==true">
+          <mat-icon style="color: rgb(71, 235, 134);">done_outline</mat-icon>
+        </button>
+        </div>
+    </div> -->
+    
+
+    
+    <br>
+  
+    <div class="form-group" style="float: right;">
+      <button class="btn btn-md btn-cancel" [routerLink]="['/main/surveyform']">BACK</button>&nbsp;
+      <button class="btn btn-md btn-save" (click)="onUpdate()">SAVE</button>
+      
+      <!-- <button class="btn btn-secondary" data-bs-dismiss="modal"
+        style="float: right; background-color:darkcyan">Close</button> -->
+    </div>
+
+  </form>
+ 
+</div>
+

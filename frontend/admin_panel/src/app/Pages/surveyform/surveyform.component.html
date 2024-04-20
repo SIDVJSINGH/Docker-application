@@ -1,0 +1,424 @@
+<h2><b>Survey Form Management</b></h2>
+
+<div class="example-button-row" style="float: right;">
+  <button type="button" mat-button class="btn-save" data-bs-toggle="modal" data-bs-target="#exampleModal">+Create
+  </button>
+</div>
+<br>
+<br>
+
+<!-- <form [formGroup]="surveyForm"> -->
+<mat-form-field class="search-query">
+  <input matInput type="text" (keyup)="applyFilter($event)" placeholder="search.." #input style="margin-left: 5px;" />
+  <button *ngIf="input.value" matSuffix mat-icon-button aria-label="Clear" (click)="onclear(input)">
+    <mat-icon color="primary">close</mat-icon>
+  </button>
+</mat-form-field>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;"> Sl </th>
+      <td mat-cell *matCellDef="let element; let i = index"> {{ getAdjustedIndex(i+1) }}</td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="profilepic">
+      <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;"> ProfilePic </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container> -->
+    <ng-container matColumnDef="profilepic">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: grey; color: white;">Image</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.image">
+          <img src="{{element.image}}" alt="Image"
+            style="height: 50px; width: 50px; border-radius: 50%; margin-left: -10px;">
+
+        </ng-container>
+        <ng-container *ngIf="!element.image">
+          <ngx-avatars [size]="50" [name]="element.title" bgColor="#3366FF"></ngx-avatars>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;">Title</th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="tag">
+      <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;">Tag/Category</th>
+      <td mat-cell *matCellDef="let element"> {{element.survey_category}} </td>
+    </ng-container> -->
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;">Created Date</th>
+      <td mat-cell *matCellDef="let element"> {{element.start_date_time }} </td>
+
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;">End Date</th>
+      <td mat-cell *matCellDef="let element"> {{element.end_date_time}} </td>
+    </ng-container>
+    <ng-container matColumnDef="sym">
+      <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;">Completed Time</th>
+      <td mat-cell *matCellDef="let element"> {{element.complete_time}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: grey; color: white;">Status</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="option_b">
+
+          <button mat-icon-button color="warn" *ngIf="element.isStatusComplete==true">
+            <mat-icon aria-hidden="false" aria-label="Block" fontIcon="block"></mat-icon>
+          </button>
+          <button mat-icon-button color="primary" *ngIf="element.isStatusComplete==false">
+            <mat-icon style="color: rgb(71, 235, 134);">done_outline</mat-icon>
+          </button>
+        </div>
+      </td>
+
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;"> Action </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onViewItem(element)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <!-- <mat-icon>dialpad</mat-icon> -->
+            <span>View</span>
+          </button>
+          <button mat-menu-item (click)="edit(element._id)">
+            <!-- <mat-icon>voicemail</mat-icon> -->
+            <span>Edit</span>
+          </button>
+
+          <button mat-menu-item (click)="onDelete(element)">
+            <!-- <mat-icon>notifications_off</mat-icon> -->
+            <span>Delete</span>
+          </button>
+          <button mat-menu-item *ngIf="element.isStatusComplete==false" (click)="onparticipation(element._id)">
+            <!-- <mat-icon>notifications_off</mat-icon> -->
+            <span>All Participants
+            </span>
+          </button>
+
+        </mat-menu>
+
+
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+<!-- </form> -->
+
+<script>
+  const input = document.getElementById('myInput');
+
+  input.addEventListener('input', function () {
+    if (input.value.length > 0) {
+      input.removeAttribute('placeholder');
+    } else {
+      input.setAttribute('placeholder', 'Enter something...');
+    }
+  });
+</script>
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <h2><b>Add Survey Form</b></h2>
+
+          <form [formGroup]="surveyForm">
+            <!-- <div class="form-group">
+              <label>Image</label>
+              <img src="assets/logo/defaultlogo5.png" alt="" style="height: 60px; width: 60px; border-radius: 30px; margin-left: -10px;">
+            </div> -->
+            <div class="form-group" style="display: flex;">
+              <label class="col-lg-3 custom-labelwidth">Image:</label>
+              <div class="col-lg-8">
+                <!-- <div class="text-center"> -->
+                <label class="col-lg-3" for="fileInput" id="icon">
+                  <!-- <img [src]="url ? url :'image'" class="avatar img-circle img-thumbnail" style="height: 120px; width: 100px; border-radius: 50px; margin-right: 360px;"> -->
+
+                  <!-- <i class="fas fa-pencil-alt" style="position: absolute; right: 20px; top: 10px; "></i>
+                    <br><br> -->
+                  <div class="col-lg-8">
+                    <button style="background-color: rgb(247, 252, 252); border-radius: 5px; width: 593px;">
+                      <input type='file' id="fileInput" (change)="image1($event)" style="float: left;"></button>
+                  </div>
+                </label>
+                <!-- </div> -->
+              </div>
+            </div>
+            <div class="form-group customize-input-top">
+              <label class="col-lg-3 custom-labelwidth">Title:</label>
+              <div class="col-lg-8 customwidth">
+                <input type="text" class="form-control" formControlName="title" placeholder="Enter the title">
+              </div>
+            </div>
+            <div class="form-group customize-input-top">
+              <label class="col-lg-3 custom-labelwidth">Description:</label>
+              <div class="col-lg-8 customwidth">
+                <input type="text" class="form-control" formControlName="survey_description"
+                  placeholder="Description">
+              </div>
+            </div>
+            <div class="form-group customize-input-top">
+              <label class="col-lg-3 custom-labelwidth">Type:</label>
+              <div class="col-lg-8 customwidth">
+                <select formControlName="survey_type_id" class="form-control" name="survey_type_id">
+                  <option value="" hidden>Select an Type</option>
+                  <option *ngFor="let item of typelist" aria-placeholder="Select an type" [value]="item._id">
+                    {{item.type_name}}</option>
+                </select>
+                <!-- <input type="text" class="form-control" formControlName="survey_category" placeholder="Enter the category name"> -->
+              </div>
+            </div>
+
+
+            <div class="form-group customize-input-top">
+              <label class="col-lg-3 custom-labelwidth">Category:</label>
+              <div class="col-lg-8 customwidth">
+
+
+                <!-- <div class="dropdown">
+                  <button class="btn dropdown-toggle" style="background-color: white;" type="button"
+                    id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Select the Category
+                  </button> -->
+                <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li *ngFor="let item of tagList" [value]="item._id">
+                      <a class="dropdown-item">{{item.tag_name}}</a>
+                    </li>
+                    
+                  </ul> -->
+                <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    
+                    <li *ngFor="let item of tagList" [class.selected]="item._id === selectedItemId" (click)="selectItem(item._id)">
+                      <a class="dropdown-item">
+                      {{ item.tag_name }}
+                      </a>
+                    </li>
+                    
+                  </ul> -->
+                <!-- <select class="form-control" formControlName="survey_category">
+                    <option value="">---Choose a Category---</option>
+                    <option *ngFor="let item of tagList" [class.selected]="item._id === selectedItemId"
+                      (change)="selectItem(item._id)">{{item.tag_name}}</option>
+                  </select> -->
+                <!-- </div> -->
+
+
+
+                <select formControlName="survey_category" class="form-control" name="survey_category">
+                  <option value="" hidden>Select an Category</option>
+                  <option *ngFor="let item of tagList" [value]="item._id">{{ item.tag_name }}</option>
+                </select>
+
+
+                <!-- <input type="text" class="form-control" formControlName="survey_category" placeholder="Enter the category name"> -->
+              </div>
+            </div>
+
+            <!-- <div class="form-group" style="display: flex; margin: 5px;">
+              <label class="col-lg-3">Maximum age range:</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" formControlName="max_age_range" placeholder="enter ...">
+              </div>
+            </div>
+            <div class="form-group" style="display: flex; margin: 5px;">
+              <label class="col-lg-3">Minimum age range:</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" formControlName="min_age_range" placeholder="enter ...">
+              </div>
+            </div> -->
+            <div class="form-group custom-range-width customize-input-top">
+              <label class="col-lg-3 custom-labelwidth-left">Age Range:</label>
+              <div class="col-lg-8 customwidth form-control">
+                Min age range: <input #lim1 type="range" formControlName="min_age_range" min="16" max="100"
+                  (change)="showVal1(lim1)" name="range1">
+                <small>{{surveyForm.value.min_age_range}}</small>&nbsp; &nbsp; &nbsp; &nbsp;
+                Max age range: <input #lim2 type="range" formControlName="max_age_range" min="16" max="100"
+                  (change)="showVal2(lim2)" name="range2">
+                <small>{{surveyForm.value.max_age_range}}</small>
+                <div *ngIf="surveyForm.get('min_age_range')?.touched && surveyForm.hasError('ageRangeInvalid')">
+                  <p style="color: red;">Minimum age cannot be greater than or equal to maximum age.</p>
+                </div>
+                
+              </div>
+
+            </div>
+
+            <!-- <div class="form-group">
+                  <button class="btn btn-outline-primary" (click)="onFind(lim1,lim2)">Find</button>
+              </div> -->
+
+
+
+
+            <div class="form-group customize-input-top">
+              <label class="col-lg-3 custom-labelwidth">Created Date:</label>
+              <div class="col-lg-8 customwidth">
+                <input type="datetime-local" class="form-control" formControlName="start_date_time"
+                  placeholder="Enter the created date">
+                  <div *ngIf="surveyForm.get('start_date_time')?.hasError('pastDate')">
+                   <p style="color: red;">Please choose a date in the present or future.</p> 
+                  </div>
+              </div>
+            </div>
+            <div class="form-group customize-input-top">
+              <label class="col-lg-3 custom-labelwidth">End Date:</label>
+              <div class="col-lg-8 customwidth">
+                <input type="datetime-local" class="form-control" formControlName="end_date_time"
+                  placeholder="Enter the end date">
+                  <div *ngIf="surveyForm.get('end_date_time')?.hasError('pastDate')">
+                    <p style="color: red;">Please choose a date in the present or future.</p> 
+                  </div>
+              </div>
+            </div>
+
+            <div class="form-group customize-input-top">
+              <label class="col-lg-3 custom-labelwidth">Test Duration:</label>
+              <div class="col-lg-8 customwidth">
+                <input type="text" id="myInput" class="form-control" formControlName="complete_time"
+                  placeholder="Ex. 10 min">
+              </div>
+            </div>
+            <!-- <div class="form-group">
+              <label>Status</label>
+              <input type="text" class="form-control" formControlName="">
+            </div> -->
+            <div class="form-group customize-input-top">
+              <label class="col-lg-3 custom-labelwidth">URL:</label>
+              <div class="col-lg-8 customwidth">
+                <input type="text" class="form-control" formControlName="url" placeholder="Paste the url">
+              </div>
+            </div>
+
+            <br>
+            <div class="form-group customize-left">
+              <button class="btn btn-md btn-save" (click)="onCreate(lim1,lim2)">ADD</button>
+              <button class="btn btn-md btn-cancel" data-bs-dismiss="modal" id="bootstrapClose"
+                style="visibility: hidden;">Close</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+      <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button> -->
+
+<!-- Modal edit component-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5> -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <section class="table table-responsive">
+
+          <table class="table table-striped table-hover table-bordered">
+
+            <tbody>
+              <tr>
+                <td>Image</td>
+                <td><img src="{{userData.image}}" alt="" style="height: 70px; width: 70px; border-radius: 30px;"></td>
+              </tr>
+              <!-- <tr>
+                <td>ID</td>
+                <td>{{userData._id}}</td>
+              </tr> -->
+              <tr>
+                <td>Status</td>
+                <!-- <td [ngClass]="{
+                  'Active': userData.status === 'Active',
+                  'Inactive': userData.status === 'Inactive',
+                }">{{userData.status}}</td> -->
+
+                <td>
+                  <div class="option_b">
+
+                    <button mat-icon-button color="warn" *ngIf="userData.isStatusComplete==true">
+                      <mat-icon aria-hidden="false" aria-label="Block" fontIcon="block"></mat-icon>
+                    </button>
+                    <button mat-icon-button color="primary" *ngIf="userData.isStatusComplete==false">
+                      <mat-icon style="color: rgb(71, 235, 134);">done_outline</mat-icon>
+                    </button>
+                  </div>
+
+                </td>
+              </tr>
+              <tr>
+                <td>Title</td>
+                <td>{{userData.title}}</td>
+              </tr>
+              <!-- <tr>
+                <td>Category</td>
+                <td>{{userData.survey_category}}</td>
+              </tr> -->
+              <tr>
+                <td>Create Date</td>
+                <td>{{userData.start_date_time }}</td>
+              </tr>
+              <tr>
+                <td>End Date</td>
+                <td>{{userData.end_date_time }}</td>
+              </tr>
+              <tr>
+                <td>Completed Time</td>
+                <td>{{userData.complete_time}}</td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </section>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div> -->
+    </div>
+  </div>
+</div>

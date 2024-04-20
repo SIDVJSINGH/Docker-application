@@ -1,0 +1,275 @@
+
+
+<div class="wrapperOuter">
+    <h2 class="title">Edit user profile</h2>
+    <div class="container-xl px-4 mt-4">
+        <!-- Account page navigation-->
+
+        <div class="row">
+            <div class="col-xl-4">
+                <!-- Profile picture card-->
+                <div class="card mb-4 mb-xl-0">
+                    <div class="card-header">Profile Picture</div>
+                    <div class="card-body text-center">
+                        <!-- Profile picture image-->
+
+                        <img class="img-account-profile rounded-circle mb-2"
+                            [src]="url ? url :profile_image||profileImageUrl" alt="Profile Picture">
+                        <!-- Profile picture help block-->
+                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                        <!-- Profile picture upload button-->
+                        <input type="file" hidden #changeprofileimage (change)="onFileSelected($event)">
+                        <button class="btn btn-warning" type="button" (click)="changeprofileimage.click()">Upload new
+                            image</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <!-- Account details card-->
+                <div class="card mb-4">
+                    <div class="card-header">Account Details</div>
+                    <div class="card-body">
+                        <form [formGroup]="form">
+                            <!-- Form Group (username)-->
+
+                            <!-- Form Row-->
+                            <!-- <div class="row gx-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">First name</label>
+                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName">Last name</label>
+                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna">
+                            </div>
+                        </div> -->
+                            <!-- Form Row        -->
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (organization name)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputOrgName">First name</label>
+                                    <input class="form-control" id="inputOrgName" formControlName="first_name"
+                                        type="text" placeholder="First name">
+                                </div>
+                                <!-- Form Group (location)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLocation">Last name</label>
+                                    <input class="form-control" id="inputLocation" formControlName="last_name"
+                                        type="text" placeholder="Last name">
+                                </div>
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (organization name)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputOrgName">Address</label>
+                                    <input class="form-control" id="inputOrgName" formControlName="address" type="text"
+                                        placeholder="Address">
+                                </div>
+                                <!-- Form Group (location)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLocation">State</label>
+                                    <select class="form-control" formControlName="state" name="state">
+                                        <option value="" disabled selected hidden>Select an state</option>
+                                        <!-- <ng-container value="" selected disabled hidden>Select a state</ng-container> -->
+
+                                        <option *ngFor="let item of stateList" aria-placeholder="Select an state"
+                                            [value]="item.name">{{item.name}}</option>
+                                    </select>
+                                    <!-- <input class="form-control" id="inputLocation" formControlName="state" type="text" placeholder="State" > -->
+                                </div>
+                            </div>
+                            <!-- Form Group (email address)-->
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                <input class="form-control" id="inputEmailAddress" formControlName="email" type="email"
+                                    placeholder="Email address" readonly>
+                            </div>
+
+                            <!-- Form Row-->
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (phone number)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Phone number</label>
+                                    <input class="form-control" id="inputPhone" formControlName="phone"
+                                        placeholder="Phone number" readonly>
+                                </div>
+                                <!-- Form Group (birthday)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Zip code</label>
+                                    <input class="form-control" id="inputBirthday" placeholder="zip code"
+                                        formControlName="zip_code" type="text">
+                                </div>
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (phone number)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Height(cm)</label>
+                                    <input class="form-control" id="inputPhone" formControlName="height"
+                                        placeholder="Enter your phone number">
+                                </div>
+                                <!-- Form Group (birthday)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Weight(kg)</label>
+                                    <input class="form-control" id="inputBirthday" formControlName="weight" type="text"
+                                        placeholder="Weight(cm)">
+                                </div>
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (phone number)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Date of birth</label>
+                                    <input class="form-control" formControlName="dob" placeholder="Date of birth" readonly>
+                                </div>
+                                <!-- Form Group (birthday)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Race</label>
+                                    <select class="form-control" aria-placeholder="Select an state"
+                                        formControlName="race" name="race">
+                                        <option value="" disabled selected >Select an race</option>
+                                        <option *ngFor="let item of raceList" [value]="item.value">{{item.label}}
+                                        </option>
+                                    </select>
+                                    <!-- <input class="form-control" id="inputBirthday" formControlName="race" type="text"  placeholder="Race" > -->
+                                </div>
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (phone number)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Ethnicity</label>
+                                    <select class="form-control" aria-placeholder="Select an state"
+                                        formControlName="ethnicity" name="ethnicity">
+                                        <option value="" disabled selected>Select an ethnicity</option>
+
+                                        <option *ngFor="let item of ethnicitylist" [value]="item.value">{{item.label}}
+                                        </option>
+                                    </select>
+                                    <!-- <input class="form-control" id="inputPhone" formControlName="ethnicity"  placeholder="Ethnicity" > -->
+                                </div>
+                                <!-- Form Group (birthday)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Gender</label>
+                                    <select class="form-control" formControlName="gender" name="gender">
+                                        <option value="" disabled selected hidden>Select an gender</option>
+
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="others">Others</option>
+                                    </select>
+                                    <!-- <input class="form-control" id="inputBirthday" formControlName="gender" type="text"  placeholder="Gender" > -->
+                                </div>
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (phone number)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Martial status</label>
+                                    <select class="form-control" formControlName="marital_status">
+                                        <option value="" disabled selected hidden>Select an martial status</option>
+
+                                        <option value="Single">Single</option>
+                                        <option value="Married">Married</option>
+                                        <option value="Divorced">Divorced</option>
+                                    </select>
+
+                                    <!-- <input class="form-control" id="inputPhone" formControlName="marital_status"  placeholder="Marital status" > -->
+                                </div>
+                                <!-- Form Group (birthday)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Income</label>
+                                    <select class="form-control" aria-placeholder="Select an state"
+                                        formControlName="income" name="income">
+                                        <option value="" disabled selected hidden>Select Income</option>
+                                        <option *ngFor="let item of incomeList" [value]="item.value">{{item.label}}
+                                        </option>
+                                    </select>
+                                    <!-- <input class="form-control" id="inputBirthday" formControlName="income" type="text"  placeholder="Income" > -->
+                                </div>
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (phone number)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Education</label>
+                                    <input class="form-control" id="inputPhone" formControlName="education"
+                                        placeholder="Education">
+                                </div>
+                                <!-- Form Group (birthday)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Occupation</label>
+                                    <input class="form-control" id="inputBirthday" formControlName="occupation"
+                                        type="text" placeholder="Occupation">
+                                </div>
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (phone number)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Sports</label>
+                                    <select class="form-control" aria-placeholder="Select an state"
+                                        formControlName="sports" name="sports">
+
+                                        <option value="" disabled selected hidden>Select an sports</option>
+                                        <option *ngFor="let item of sportsList" [value]="item.value">{{item.label}}
+                                        </option>
+                                    </select>
+                                    <!-- <input class="form-control" id="inputPhone" formControlName="sports"  placeholder="Sports" > -->
+                                </div>
+                                <!-- Form Group (birthday)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Athletics</label>
+                                    <select class="form-control" aria-placeholder="Select an state"
+                                        formControlName="athletics" name="athletics">
+
+                                        <option value="" disabled selected hidden>Select an athletics</option>
+                                        <option *ngFor="let item of athleticsList" [value]="item.value">{{item.label}}
+                                        </option>
+                                    </select>
+                                    <!-- <input class="form-control" id="inputBirthday" formControlName="Athletics" type="text"   > -->
+                                </div>
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (phone number)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Climbing</label>
+                                    <input class="form-control" id="inputPhone" formControlName="climbing"
+                                        placeholder="Climbing">
+                                </div>
+                                <!-- Form Group (birthday)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Party</label>
+
+                                
+                                    <select class="form-control" formControlName="party" id="party" name="party">
+                                       <option value="" disabled selected hidden>Select a party</option>
+                                       <option *ngFor="let item of partyList" [value]="item.value">{{item.label}}</option>
+
+                                    </select>
+                                    <!-- <input class="form-control" id="inputBirthday" formControlName="party" type="text"  placeholder="Party" > -->
+                                </div>
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (phone number)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Outing</label>
+                                    <input class="form-control" id="inputPhone" formControlName="outing"
+                                        placeholder="Outing">
+                                </div>
+                                <!-- Form Group (birthday)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1">Cycling</label>
+                                    <input class="form-control" id="inputBirthday" formControlName="cycling" type="text"
+                                        placeholder="Cycling">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputEmailAddress">Paypal ID</label>
+                                <input class="form-control" id="inputEmailAddress" formControlName="paypal_id"
+                                    type="email" placeholder="Paypal ID">
+                            </div>
+
+                            <!-- Save changes button-->
+                            <button class="btn btn-primary" type="button" (click)="saveProfile()">Save changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

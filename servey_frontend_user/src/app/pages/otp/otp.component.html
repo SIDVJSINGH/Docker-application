@@ -1,0 +1,34 @@
+<app-common-template>
+
+    <section class="log_wrap forgotpass_wrp">
+        <mat-card class="inner-wrap">
+            <span class="log-left">
+                <mat-card-title class="wlcome-txt">Welcome!</mat-card-title>
+                <mat-card-subtitle class="wlcome-subtxt">There are many variations of passages of Lorem Ipsum
+                    available,<br /> but the majority have
+                    suffered alteration.</mat-card-subtitle>
+
+            </span>
+            <span class="log-right">
+                <form class="login-form" autocomplete="off" >
+                    <mat-card-title>Otp Verification</mat-card-title>
+                    <mat-card-subtitle>Enter your 6 digits Otp</mat-card-subtitle>
+
+               
+                   <div class="otp" >
+                    <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="{length:6}" style="font-size: small;"></ng-otp-input>
+                   </div>
+                        
+                   
+                    <span class="btn-act">
+                        <button class="btn-primary" mat-button (click)="onsave()">Proceed</button>
+                    </span>
+                    <mat-card-subtitle class="account-txt">
+                       
+                    </mat-card-subtitle>
+                </form>
+
+            </span>
+        </mat-card>
+    </section>
+</app-common-template>

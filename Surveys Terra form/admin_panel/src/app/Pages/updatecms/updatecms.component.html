@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="content_box">
+    <h2>
+      Update Content - {{pagename}}</h2>
+      <form [formGroup]="formGroup">
+      <div class="example-button-row">
+      
+        <button
+        type="button"
+        mat-raised-button color="accent"
+        class="add-btn"
+        (click)="onGalary()"> <input type="file" (change)="image1($event)"></button>
+      </div>
+    
+ 
+      <div class="edit_form" *ngIf="!plainText">
+        <mat-form-field class="full-width"   >
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="Update title here" formControlName="title" >
+     
+         
+          <mat-error *ngIf="formGroup.invalid">
+            Please enter title.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="edit_form" *ngIf="contact=='contact-us'">
+        <mat-form-field class="full-width"   >
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Update title here" formControlName="email" >
+     
+         
+          <mat-error *ngIf="formGroup.invalid">
+            Please enter email.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="edit_form" *ngIf="!plainText && contact!='contact-us'">
+        <mat-form-field class="full-width"  >
+          <input matInput placeholder="Enter content here" formControlName="text" hidden>
+        
+      <angular-editor formControlName="text" [config]="editorConfig"></angular-editor>
+
+          <mat-error *ngIf="formGroup.invalid">
+            Please enter content.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="edit_form" *ngIf="plainText">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Enter content here" formControlName="text">
+          <mat-error *ngIf="formGroup.invalid">
+            Please enter content
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="example-button-row">
+        <button
+        type="button"
+        class="add-btn " 
+        mat-button
+        [disabled]="formGroup.invalid"  class="btn-save" (click)="savecms()">SAVE</button>
+      <button
+      type="button"
+      mat-button
+    color="accent"
+      class="btn-cancel " 
+      [routerLink]="'/main/cms'">CANCEL</button>
+   
+      
+      </div>
+     
+    </form>
+  </div>
+
+

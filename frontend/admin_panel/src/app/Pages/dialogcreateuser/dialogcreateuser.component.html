@@ -1,0 +1,73 @@
+<section class="vh-50" style="background-color: #f7f7f4;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-12 mb-4 mb-lg-0">
+        <div class="card mb-3" style="border-radius: .5rem; background-color: rgb(225, 241, 255);">
+          <div class="row g-0">
+            <div class="col-md-4 gradient-custom text-center text-white"
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+
+              <div class="avatar-container">
+                <img *ngIf="Image" src="{{Image}}" alt="Avatar" class="img-fluid" />
+                <ngx-avatars *ngIf="!Image" [size]="100"
+                  [name]="datalist.first_name + ' ' + datalist.last_name" bgColor="#4c8367"
+                  fgColor="gold"></ngx-avatars>
+              </div>
+
+
+
+
+
+              <h2>{{datalist.first_name}}&nbsp;{{datalist.last_name}}</h2>
+              <h3>{{datalist.role}}</h3>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h3>INFORMATION</h3>
+                <hr class="mt-0 mb-1">
+                <div class="row pt-1">
+                  <div class="col-12 mb-1">
+                    <p>Email : <span class="text-muted">{{datalist.email}}</span></p>
+                  </div>
+                  <div class="col-12 mb-1">
+                    <p>Phone : <span class="text-muted">{{datalist.phone}}</span></p>
+                  </div>
+                  <div class="col-12 mb-1">
+                    <p>Gender : <span class="text-muted">{{datalist.gender}}</span></p>
+                  </div>
+                  <div class="col-12 mb-1">
+                    <p>Date of Birth : <span class="text-muted">{{datalist.dob}}</span></p>
+                  </div>
+
+
+                </div>
+                <h3>ADDRESS</h3>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-12 mb-1">
+                    <p>Address: <span class="text-muted">{{datalist.address}}</span></p>
+                  </div>
+                  <div class="col-12 mb-1">
+                    <p>Zip Code: <span class="text-muted">{{datalist.zip_code}}</span></p>
+                  </div>
+                  <div class="col-12 mb-1">
+                    <p>State: <span class="text-muted">{{datalist.state}}</span></p>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="example-button-row" style="float: right;">
+
+      <button type="button" mat-button class="btn-cancel" (click)="onCancel()">CANCEL</button>
+
+
+    </div>
+  </div>
+
+</section>

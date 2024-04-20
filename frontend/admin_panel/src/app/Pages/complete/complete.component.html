@@ -1,0 +1,137 @@
+<!-- <ngx-spinner type="ball-scale-multiple"></ngx-spinner> -->
+
+
+
+
+
+
+<div class="wrapperOuter">
+    <h2 class="title">Reward Listing Management</h2>
+    <!-- <div class="example-button-row" style="float: right;">
+    
+  
+      <button 
+      type="button"
+      mat-raised-button color="primary" (click)="openDialog()">+CREATE 
+    
+      </button>
+    </div> -->
+    <hr>
+
+
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-lg-10">
+            <h2 class="title">All Completed Participants List</h2>
+
+        </div>
+        <div class="col-lg-2">
+
+            <button type="button" mat-button class="btn-cancel" (click)="back()">BACK
+
+            </button>
+        </div>
+    </div>
+
+
+    <div class="row1 mt-4">
+        <mat-radio-group [(ngModel)]="selectedStatus" (change)="filterData(selectedStatus)">
+            <mat-radio-button value="all">All</mat-radio-button>
+            <mat-radio-button value="completed" color="primary">Rewarded Participants</mat-radio-button>
+            <mat-radio-button value="rejected" color="warn">Rejected Participants</mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+    <div class="row1 mt-4" *ngIf="dataSource1?.data?.length > 0; ">
+
+
+        <mat-form-field class="search-query">
+            <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Search.." #input
+                style="margin-left: 5px;" />
+            <button *ngIf="input.value" matSuffix mat-icon-button aria-label="Clear" (click)="onclear(input)">
+                <mat-icon color="primary">close</mat-icon>
+            </button>
+        </mat-form-field>
+
+    </div>
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Sl</th>
+                <td mat-cell *matCellDef="let element; let i = index"> {{ getAdjustedIndex(i+1) }}</td>
+            </ng-container>
+            <!-- pic Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.user_id.first_name}}&nbsp;{{element.user_id.last_name}} </td>
+            </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+                <td mat-cell *matCellDef="let element"> {{element.survey_id.title}} </td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+                <td mat-cell *matCellDef="let element"> {{element.user_id.email}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="submit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Submit At</th>
+                <td mat-cell *matCellDef="let element"> {{element.submitted_date_time }} </td>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="reward">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Rewards</th>
+            <td mat-cell *matCellDef="let element"> {{element.reward_earned_value}} </td>
+        </ng-container> -->
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+                <td mat-cell *matCellDef="let element"> <span
+                        [ngClass]="{'x':element.status ==='completed','y':element.status==='ongoing','z':element.status==='rejected'}">{{element.status}}
+                    </span></td>
+            </ng-container>
+            <ng-container matColumnDef="rewards">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Rewards</th>
+                <td mat-cell *matCellDef="let element"> {{element.reward_earned_value}} </td>
+            </ng-container>
+
+            <!-- 
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="option_b">
+
+                    <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+                    <mat-menu #menu="matMenu" xPosition="before">
+                        
+                        <button mat-menu-item (click)="openDialog1(element.id)">
+                            <mat-icon>edit</mat-icon>
+                            Update Rewards</button>
+                        
+                    </mat-menu>
+
+                </div>
+
+            </td>
+        </ng-container> -->
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+        </table>
+
+        <mat-paginator #paginator showFirstLastButtons [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+            (page)="onPageChange($event)"></mat-paginator>
+
+    </div>
+
+</div>

@@ -1,0 +1,342 @@
+<app-common-template>
+
+    <main class="signup-wrap">
+        <section class="container">
+            <mat-card class="signup-in-wrap row">
+
+                <mat-card-title>Welcome!</mat-card-title>
+                <mat-card-subtitle>Fill the details and create your account</mat-card-subtitle>
+                <form class="registerForm" [formGroup]="form">
+
+                    <span class="row">
+                        <span class="col-md-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>First name</mat-label>
+                                <input matInput placeholder="First name" [readonly]="emailInputReadOnly"
+                                    formControlName="first_name">
+
+                            </mat-form-field>
+                        </span>
+                        <span class="col-md-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Last name</mat-label>
+                                <input matInput [readonly]="emailInputReadOnly" placeholder="Last name"
+                                    formControlName="last_name">
+                            </mat-form-field>
+                        </span>
+                        <span class="col-md-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Date of birth</mat-label>
+                                <input matInput [readonly]="emailInputReadOnly" [matDatepicker]="picker"
+                                    placeholder="Age must be 16  above" formControlName="dob">
+                                <mat-datepicker-toggle matIconSuffix [for]="picker" >
+                                    <mat-icon> calendar_month</mat-icon>
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #picker (dateChange)="onDateChange($event)"></mat-datepicker>
+
+                                <!-- <mat-error *ngIf="form.controls['dob'].hasError('required') ">Age must be above
+                                    16.</mat-error> -->
+
+                             
+
+                            </mat-form-field>
+                        </span>
+
+                        <span class="col-md-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Select gender</mat-label>
+                                <mat-select formControlName="gender" [disabled]="isReadOnly">
+                                    <mat-option value="male">Male </mat-option>
+                                    <mat-option value="female">Female </mat-option>
+                                    <mat-option value="others">Others</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+                        <!-- <span class="col-md-12">
+                            <mat-form-field appearance="outline" class="address">
+                                <mat-label>Address</mat-label>
+                                <textarea [readonly]="emailInputReadOnly" matInput formControlName="address"></textarea>
+                            </mat-form-field>
+                        </span> -->
+                        <!-- <span class="col-md-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Select Country</mat-label>
+                                <mat-select formControlName="country" [disabled]="isReadOnly" (selectionChange)="getcountry()">
+                                    <mat-option *ngFor="let country of countrydata" [value]="country">{{country}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span> -->
+                        <span class="col-md-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Select country</mat-label>
+                                <mat-select formControlName="country" [disabled]="isReadOnly">
+                                    <mat-option *ngFor="let country of countrydata" [value]="country.name">{{country.name}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+                        
+                        <span class="col-md-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Select state</mat-label>
+                                <mat-select formControlName="state" [disabled]="isReadOnly">
+                                    <mat-option *ngFor="let state of statedata" [value]="state.name">{{state.name}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+                        <span class="col-md-6">
+                            <mat-form-field appearance="outline" class="pass_multi_hints">
+                                <mat-label>Zip code</mat-label>
+                                <input [readonly]="emailInputReadOnly" type="text" matInput placeholder="Zip code "
+                                    formControlName="zip_code" pattern="[A-Za-z0-9]*">
+                                    <!-- <mat-error *ngIf="form.controls['zip_code'].hasError('positiveNumber')">
+                                        Please enter a positive number for the zip code.
+                                      
+                                       
+                                    </mat-error> -->
+                            </mat-form-field>
+                        </span>
+
+
+                        <!-- <span class="col-md-12">
+                            <label class="image-upload-box">
+                                <input type="file" hidden #inputFile (change)="image1($event)" />
+                                <mat-icon>add</mat-icon>
+                                <p>Upload profile image<br />
+                                    (Please select jpg or png logo image)</p>
+                                <p *ngIf="fileName!=''">{{fileName}}</p>
+
+                            </label>    
+                        </span> -->
+                        <span class="col-md-6">
+                            <mat-form-field appearance="outline" class="pass_multi_hints">
+                                <mat-label>Password</mat-label>
+                                <input [readonly]="emailInputReadOnly" matInput [type]="password ? 'password' : 'text'"
+                                    formControlName="password">
+                                <button type="button" mat-icon-button matSuffix (click)="password = !password"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="password">
+                                    <mat-icon>{{password ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <mat-error
+                                *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched">
+                                Please enter a password.
+                            </mat-error>
+                            <mat-error
+                                *ngIf="form.controls['password'].hasError('pattern') && form.controls['password'].touched">
+                                Password with at least 8 characters, including special characters. Mix letters, numbers, and symbols to enhance your registration security.
+                            </mat-error>
+                            </mat-form-field>
+                        </span>
+                        <span class="col-md-6 custom-clear">
+                            <mat-form-field appearance="outline" class="pass_multi_hints">
+                                <mat-label>Confirm password</mat-label>
+                                <input [readonly]="emailInputReadOnly" matInput
+                                    [type]="confirmPassword ? 'password' : 'text'" formControlName="confirmPassword">
+
+                                <button type="button" mat-icon-button matSuffix
+                                    (click)="confirmPassword = !confirmPassword" [attr.aria-label]="'Hide password'"
+                                    [attr.aria-pressed]="confirmPassword">
+                                    <mat-icon>{{confirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <!-- Display the error message only when confirmPassword is touched -->
+
+                            </mat-form-field>
+                            <mat-error *ngIf="form.get('confirmPassword')?.touched && form.hasError('passwordMismatch')">
+                                Passwords do not match. 
+                            </mat-error>
+                        </span>
+
+                        <span class="col-md-12 mb-22">
+                            <fieldset class="contactInfo">
+                                <legend>Contact information</legend>
+                                <span class="row">
+                                    <span class="col-md-12">
+                                        <span class="row">
+                                            <span class="col-md-12" *ngIf="emailotpshow">
+                                                <p class="varificationLabel">We have sent you a six digit One Time
+                                                    Password (OTP) to your registered email address, please enter OTP to
+                                                    validate the registered email Id. <span style="font-weight: bold; color: green;"
+                                                        *ngIf="emailtimer"  >  Otp will
+                                                        expire within <span [style.color]="getTextColor()">{{emailBtnText}}</span>  sec </span> <a 
+                                                        (click)="emailOtp()" *ngIf="resendotp"
+                                                        style="color: #bc9754; cursor: pointer; font-weight: bold; border: solid 1px #ccc; padding: 5px; border-radius: 8px; margin: 2px;">Resend Otp</a> </p>
+
+
+
+                                            </span>
+                                            <span class="col-md-6">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Email address</mat-label>
+                                                    <input matInput placeholder="Email address" formControlName="email"
+                                                        [readonly]="emailInputReadOnly">
+                                                        <mat-error
+                                                        *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched">
+                                                        Please enter email.
+                                                    </mat-error>
+                                                    <mat-error *ngIf="form.controls['email'].hasError('pattern') && form.controls['email'].touched">
+                                                        Please enter a valid email.
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </span>
+                                            <span class="col-md-2" *ngIf="mainemailshow">
+                                                <span class="col-sm-6 pl-0" style="text-align: right;">
+                                                    <button type="button" mat-button class="btn-verify"
+                                                        [disabled]=[btnDisable] matTooltipPosition="above"
+                                                        aria-label="Email tooltip content"><mat-icon>check_circle_outline</mat-icon>Verified</button>
+                                                </span>
+
+                                            </span>
+                                            <span class="col-md-6" *ngIf="emailotpshow">
+
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Enter OTP</mat-label>
+                                                    <input matInput id="otpInput"
+                                                        placeholder="Enter OTP sent your email" #Otp1>
+                                                </mat-form-field>
+                                            </span>
+
+                                            <!-- <span class="col-sm-2 pl-0">
+                                                <button (click)="emailOtp()" type="button" mat-button class="btn-verify"
+                                                    [disabled]=[btnDisable] matTooltip="Click here to regenerate OTP"
+                                                    matTooltipPosition="above"
+                                                    aria-label="Email tooltip content">{{emailBtnText}}</button>
+                                            </span> -->
+                                        </span>
+
+                                        <span class="row" *ngIf="showEmailOtp">
+                                            <span class="col-sm-10">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Please enter OTP to validate the registered email
+                                                        Id</mat-label>
+                                                    <input matInput #otp>
+                                                </mat-form-field>
+                                            </span>
+                                            <span class="col-sm-2 pl-0">
+                                                <button type="button" mat-button class="btn-verify"
+                                                    [disabled]=[btnDisable]>Verify
+                                                    OTP</button>
+                                            </span>
+                                        </span>
+
+                                    </span>
+                                    <!-- end email section -->
+                                    <!-- <span class="col-md-12" [hidden]="showDiv">
+                                        <span class="row mb-22">
+                                            <span class="col-md-12" *ngIf="otpphone">
+                                                <p class="varificationLabel">We have sent you a six digit One Time
+                                                    Password (OTP), please enter OTP to validate the registered mobile
+                                                    number.<span style="font-weight: bold; color: green;"
+                                                    *ngIf="phonetimer"  >  Otp will
+                                                    expire within <span [style.color]="getTextColor1()">{{phoneBtnText}}</span>  sec </span> <a 
+                                                    (click)="phoneOtp()" *ngIf="resendotp1"
+                                                    style="color: #bc9754; cursor: pointer; font-weight: bold; border: solid 1px #ccc; padding: 5px; border-radius: 8px; margin: 2px;">Resend Otp</a>
+                                                </p>
+                                            </span>
+
+                                            
+                                            <span class="col-md-6 sm-mb-16">
+                                                <input matInput type="tel" class="countryfrom"
+                                                    placeholder="Phone Number *" id="phone"
+                                                    [readonly]="phoneInputReadOnly">
+                                                <div id="country-code" class="intl-tel-input"></div>
+                                            </span>
+                                            <span class="col-md-2" *ngIf="mainphoneshow">
+                                                <span class="col-sm-6 pl-0" style="text-align: right;">
+                                                    <button type="button" mat-button class="btn-verify"
+                                                        [disabled]=[btnDisable] matTooltipPosition="above"
+                                                        aria-label="Email tooltip content"><mat-icon>check_circle_outline</mat-icon>Verified</button>
+                                                </span>
+
+                                            </span>
+                                            <span class="col-md-6" *ngIf="otpphone">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Enter OTP</mat-label>
+                                                    <input matInput id="otpInput1"
+                                                        placeholder="Enter OTP sent your Phone number" #Otp11>
+                                                </mat-form-field>
+                                            </span> -->
+                                            <!--1 <span class="col-sm-2 pl-0">
+                                                <button (click)="phoneOtp()" type="button" mat-button class="btn-verify"
+                                                    [disabled]=[btnDisable] matTooltip="Click here to regenerate OTP"
+                                                    matTooltipPosition="above"
+                                                    aria-label="Phone tooltip content">{{phoneBtnText}}</button>
+                                            </span> 1-->
+                                        <!-- </span>
+
+                                        <span class="row " *ngIf="showPhoneOtp">
+                                            <span class="col-sm-10">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>please enter OTP to validate the registered mobile
+                                                        number.</mat-label>
+                                                    <input matInput #otp1>
+                                                </mat-form-field>
+                                            </span>
+                                            <span class="col-sm-2 pl-0">
+                                                <button type="button" mat-button class="btn-verify"
+                                                    [disabled]=[btnDisable]>Verify
+                                                    OTP</button>
+                                            </span>
+                                        </span>
+
+                                    </span> -->
+                                </span>
+                            </fieldset>
+                        </span>
+
+                        <p class="SignUpForm_subscript__AyYz0">By signing up I agree to the
+                            <button type="button" (click)="openTermsModal()"
+                                class="Button_root__dXjQ4 Button_type-text__GtZfF Button_color-primary__5KrzR Button_size-normal__2_7ai SignUpForm_agreementButton__QLGzC">
+                                Terms & Conditions
+                            </button>
+                        </p>
+
+                        <p class="SignUpForm_subscript__AyYz0">Read our
+                            <button type="button" (click)="openPrivacyModal()"
+                                class="Button_root__dXjQ4 Button_type-text__GtZfF Button_color-primary__5KrzR Button_size-normal__2_7ai SignUpForm_agreementButton__QLGzC">
+                                Privacy Policy
+                            </button>
+                        </p>
+
+
+
+                        <span class="col-md-12" *ngIf="emailshow">
+                            <button type="button" class="btn-primary" mat-button (click)="emailOtp()">Submit</button>
+                        </span>
+                        
+                        <span class="col-md-12" *ngIf="showemail">
+                            <button type="button" class="btn-primary" mat-button (click)="emailVerify()">Verify
+                                OTP</button>
+                        </span>
+                        <!-- <span class="col-md-12" *ngIf="phoneshow1">
+                            <button type="button" class="btn-primary" mat-button
+                                (click)="phoneOtp()">Submit</button>
+                        </span> -->
+                        <span class="col-md-12" *ngIf="showPhone">
+                            <button type="button" class="btn-primary" mat-button (click)="phoneVerify()">Verify
+                                OTP</button>
+                        </span>
+                        <span class="col-md-12" *ngIf="creteshow">
+                            <p>
+                                <mat-checkbox class="example-margin"
+                                    formControlName="is_accept_terms_and_conditions">Accept all </mat-checkbox>
+                                <a href="#/terms-and-condition" target="_blank" mat-button type="button" color="primary"
+                                    class="termsBtn">Terms and
+                                    conditions,</a>
+                                <a href="#/privacy-policy" target="_blank" mat-button type="button" color="primary"
+                                    class="termsBtn">Privacy
+                                    Policy</a>
+                            </p>
+                            <!-- <div *ngIf="!form.valid">
+                                <p style="color: red;">*Please fill out all the fields before saving.</p>
+                              </div> -->
+                            <button type="button" class="btn-primary" mat-button (click)="onCreate()">Create
+                                Account</button>
+
+                            <p class="alredy-login">Already have an account? <a [routerLink]="'/login'">Login</a></p>
+                        </span>
+                    </span>
+                </form>
+            </mat-card>
+        </section>
+    </main>
+
+</app-common-template>

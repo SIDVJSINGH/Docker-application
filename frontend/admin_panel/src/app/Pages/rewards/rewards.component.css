@@ -1,0 +1,144 @@
+
+
+img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+  .search-container{
+    display: flex;
+    justify-content: space-around;
+  }
+  .search-container .search-query{
+    flex: 1;
+  }
+  .search-container .search-date-container{
+    flex: 1;
+    display: flex;
+  }
+  .search-btn{
+    align-self: center;
+  }
+  
+ 
+  .wrapperOuter{
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+  
+  }
+  .wrapper{
+    width: 100%;
+    height: 100%;
+    padding: 35px;
+    background: #fff;
+    box-shadow: 2px 2px 12px rgba(0, 0,0, 0.1),-1px -1px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  .wrapper h2.title {
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 30px;
+  }
+  
+  
+    table {
+        width: 100%;
+      }
+      
+.row .btn-save{
+    width: 100%;
+    margin-bottom: 25px;
+   }
+      
+      .mat-mdc-form-field {
+        font-size: 14px;
+        width: 100%;
+      }
+      
+    
+      .mat-header-cell{
+        background-color: #163813;
+      }
+         
+      .actionBtn{
+        cursor: pointer;
+        
+    }
+    /* Your component's CSS file */
+  .mat-header-cell, .mat-cell {
+    vertical-align: middle; /* Adjust as needed */
+  }
+  
+    .mat-mdc-table .mdc-data-table__header-row {
+        background: grey;
+     
+    }
+    .mdc-data-table__header-cell {
+        color: rgba(253, 249, 249, 0.87);
+        font-weight: bold;
+        font-size: 14px; 
+      }
+  
+  .mat-icon:hover {
+    color: red; 
+  }
+  
+  
+  .mat-icon:active {
+    color: blue; 
+  }
+  /* Green text color class */
+  .status-green {
+    color: green;
+  }
+  
+  /* Red text color class */
+  .status-red {
+    color: red;
+  }
+  
+  .x{
+    color:green;
+  }
+  
+ 
+  .z{
+    color:red;
+  }
+  
+  .y{
+    color:rgb(72, 174, 241);
+  }
+  .reward-card .mat-mdc-card-header {
+    padding: 16px ;
+    background-color: grey;
+    color: rgb(36, 187, 36);
+    justify-content: center;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    
+}
+.reward-card.reject .mat-mdc-card-header {
+  padding: 16px ;
+  background-color: grey;
+  color: rgb(240, 67, 44);
+  justify-content: center;
+  
+}
+.reward-card .card-text{
+  color:rgb(36, 187, 36);
+  font-size: 16px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.reward-card.reject .card-text{
+  color:rgb(240, 67, 44);
+}
+.example-margin {
+  margin: 0 12px;
+}

@@ -1,0 +1,46 @@
+<nav class="head_wrp" [ngClass]="{ fixedhead: scrolled }">
+    <mat-toolbar class="header">
+        <a class="logo_wrp" ><img src="assets/img/logo.svg" alt="logo" class="img-responsive" /></a>
+        <button class="hamMenu" mat-stroked-button (click)="hide = !hide"><mat-icon>{{hide ? 'close':
+                'menu'}}</mat-icon></button>
+        <mat-nav-list class="nav-list" [ngClass]="{ open: hide }">
+            <mat-list-item>
+                <a matListItemTitle routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+                    [routerLink]="['/survey-listing']">Home</a>
+            </mat-list-item>
+            <mat-list-item>
+                <a matListItemTitle [routerLink]="['/survey-listing']" routerLinkActive="active-link">Surveys</a>
+            </mat-list-item>
+            <mat-list-item>
+                <a matListItemTitle [routerLink]="['/about-us']" routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{exact: true}">About</a>
+            </mat-list-item>
+
+            <mat-list-item>
+                <a matListItemTitle [routerLink]="['/contact-us']" routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{exact: true}">Contact Us</a>
+            </mat-list-item>
+            <mat-list-item>
+                <a matListItemTitle href="https://zephyrsample.com/" target="_blank">Market Research</a>
+            </mat-list-item>
+            <mat-list-item *ngIf="loggedIn()" [routerLink]="['/manage-profile']">
+                {{loggedUser}}&nbsp;{{loggedUserLastName}} <button class="profilebtn" mat-mini-fab
+                    aria-label="Example icon button with a filter list icon">
+                    <img [src]="profile_image||imageUrl" alt="">
+                </button>
+
+            </mat-list-item>
+
+            <mat-list-item class="login" *ngIf="!loggedIn()">
+                <a matListItemTitle routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+                    [routerLink]="['/login']">Login</a>
+            </mat-list-item>
+            <mat-list-item class="login" *ngIf="!loggedIn()">
+                <a matListItemTitle [routerLink]="['/registration']" routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{exact:true}"> Register</a>
+            </mat-list-item>
+        </mat-nav-list>
+
+    </mat-toolbar>
+
+</nav>

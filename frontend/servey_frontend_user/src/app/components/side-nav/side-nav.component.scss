@@ -1,0 +1,73 @@
+@import "../../../assets/css/color-platte.scss";
+
+.side-nav-wrap {
+  display: flex;
+  align-items: flex-start;
+  background: $bg-color;
+  min-height: 100%;
+  padding: 1.5rem 3.125rem 4rem;
+  .side-nav {
+    width: 315px;
+    background: $text-white;
+    border-radius: 0.625rem;
+    padding: 1.875rem;
+    margin-right: 1.875rem;
+    .mat-mdc-list-item {
+      border-radius: 1.875rem;
+      margin-bottom: 1rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .active-link {
+      background: $primary-color;
+
+      .mdc-list-item__content {
+        .mdc-list-item__primary-text {
+          color: $btn-txt !important;
+        }
+      }
+    }
+  }
+  .content-part {
+    flex: 1;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .side-nav-wrap {
+    .side-nav {
+      width: 230px;
+      padding: 1.5rem;
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .side-nav-wrap {
+    padding: 1.5rem 2rem 4rem;
+    flex-wrap: wrap;
+    .content-part {
+      width: 100%;
+    }
+    .side-nav {
+      width: 100%;
+      margin: 0 0 1.5rem 0;
+      .mat-mdc-list-base {
+        display: flex;
+        flex-wrap: wrap;
+        .mat-mdc-list-item {
+          width: auto;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .side-nav-wrap {
+    padding: 1.5rem 1rem 4rem;
+  }
+}
+

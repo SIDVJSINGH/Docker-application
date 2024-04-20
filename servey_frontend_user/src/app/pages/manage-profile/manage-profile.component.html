@@ -1,0 +1,351 @@
+<app-side-nav>
+    <main class="dashboard-wrap manage-profile">
+        <mat-card class="title-card">
+            <mat-card-title>Manage Profile</mat-card-title>
+            <mat-nav-list class="bredcam-nav">
+                <a mat-list-item [activated]="isActive" [routerLink]="['/survey-listing']">Home /</a>
+                <a mat-list-item>Manage profile</a>
+            </mat-nav-list>
+        </mat-card>
+        <mat-tab-group animationDuration="0ms">
+            <mat-tab label="Personal details">
+                <form [formGroup]="form">
+                    <section class="profile-form-wrap">
+                        <!-- <mat-card-title>Personal details</mat-card-title> -->
+                        <mat-card>
+                            <span class="prof-img-wrp">
+                                <span class="avt-wrp">
+                                    <img [src]="url?url:profile_image||imageUrl" alt="#" />
+                                    <input type="file" hidden #uploadAvt alt="#" (change)="image1($event)" />
+                                    <button mat-fab class="add-icon" (click)="uploadAvt.click()">
+                                        <mat-icon>add</mat-icon>
+                                    </button>
+                                </span>
+                                <span class="avt-ins-cont">
+                                    <p>Upload profile image</p>
+                                    <p>(Please select jpg or png logo image)</p>
+                                </span>
+                            </span>
+                            <span class="row">
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>First name</mat-label>
+                                        <input matInput formControlName="first_name">
+                                    </mat-form-field>
+                                </span>
+                              <!-- <p hidden>{{getlist.first_name}}</p>   -->
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Last name</mat-label>
+                                        <input matInput formControlName="last_name">
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-12 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Email Address</mat-label>
+                                        <input matInput type="text" formControlName="email" readonly>
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12" hidden>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Phone number</mat-label>
+                                        <input matInput type="tel" formControlName="phone" readonly>
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-12 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Address</mat-label>
+                                        <input matInput formControlName="address">
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Select country</mat-label>
+                                        <mat-select formControlName="country">
+                                            <mat-option *ngFor="let country of statedata" [value]="country.name">{{country.name}}</mat-option>
+                                
+                                        </mat-select>
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Select state</mat-label>
+                                        <mat-select formControlName="state" >
+                                            <mat-option *ngFor="let state of statedata" [value]="state.name">{{state.name}}</mat-option>
+        
+                                        </mat-select>
+                                    </mat-form-field>
+                                </span>
+                                <!-- <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>State</mat-label>
+                                        <input matInput formControlName="state">
+                                    </mat-form-field>
+                                </span> -->
+
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Zip code</mat-label>
+                                        <input matInput type="text" formControlName="zip_code">
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Height (cm)</mat-label>
+                                        <input matInput formControlName="height">
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Weight (kg)</mat-label>
+                                        <input matInput formControlName="weight">
+                                    </mat-form-field>
+                                </span>
+                            </span>
+                        </mat-card>
+                    </section>
+                    <!-- Personal details -->
+                    <section class="profile-form-wrap">
+                        <mat-card-title>Demographic Details</mat-card-title>
+                        <mat-card>
+                            <span class="row">
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <input matInput formControlName="dob" readonly>
+
+                                        <!-- <input matInput [matDatepicker]="picker" formControlName="dob"> -->
+                                        <mat-label>Date of birth</mat-label>
+                                        <!-- <mat-datepicker-toggle matIconSuffix [for]="picker">
+                                            <mat-icon matDatepickerToggleIcon>
+                                                <img src="assets/img/calendarIcon.png" alt="#" />
+                                            </mat-icon>
+                                        </mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker> -->
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Race</mat-label>
+                                        <mat-select formControlName="race">
+                                            <mat-option *ngFor="let race of racedata" [value]="race.value">{{race.value}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Ethnicity</mat-label>
+                                    
+                                        <mat-select formControlName="ethnicity">
+                                           
+                                            <mat-option *ngFor="let ethen of ethnicity" [value]="ethen.value">{{ethen.value}}</mat-option>
+
+                                           
+                                           
+                                            
+                                        </mat-select>
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Gender</mat-label>
+                                        <mat-select formControlName="gender">
+                                            <mat-option value="male">
+                                                Male
+                                            </mat-option>
+                                            <mat-option value="female">
+                                                Female
+                                            </mat-option>
+                                            <mat-option value="others">
+                                                Others
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Marital Status</mat-label>
+                                        <mat-select formControlName="marital_status">
+                                            <mat-option value="Single">
+                                                Single
+                                            </mat-option>
+                                            <mat-option value="Married">
+                                                Married
+                                            </mat-option>
+                                            <mat-option value="Divorced">
+                                                Divorced
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Income</mat-label>
+                                        <mat-select formControlName="income">
+                                            
+                                            <mat-option *ngFor="let income of incomedata" [value]="income.value">{{income.value}}</mat-option>
+
+                                            
+                                        </mat-select>
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Education</mat-label>
+                                        <input matInput formControlName="education">
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Occupation</mat-label>
+                                        <input matInput formControlName="occupation">
+                                    </mat-form-field>
+                                </span>
+                            </span>
+                        </mat-card>
+                    </section>
+                    <!-- Demographic Details -->
+                    <section class="profile-form-wrap">
+                        <mat-card-title>Interests and Hobbies</mat-card-title>
+                        <mat-card>
+                            <span class="row">
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Select sports</mat-label>
+                                        <mat-select formControlName="sports" >
+                                            <mat-option *ngFor="let sport of sportsdata" [value]="sport.value">{{sport.value}}</mat-option>
+        
+                                        </mat-select>
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Athletics</mat-label>
+                                        <mat-select formControlName="athletics">
+                                            <mat-option *ngFor="let ath of athleticsdata" [value]="ath.value">{{ath.value}}</mat-option>
+
+                                        </mat-select>
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Climbing</mat-label>
+                                        <input matInput formControlName="climbing">
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Party</mat-label>
+                                        <mat-select formControlName="party">
+                                            <mat-option *ngFor="let party of partydata" [value]="party.value">{{party.value}}</mat-option>
+
+                                        </mat-select>
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Outing</mat-label>
+                                        <input matInput formControlName="outing">
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Cycling</mat-label>
+                                        <input matInput formControlName="cycling">
+                                    </mat-form-field>
+                                </span>
+                            </span>
+                        </mat-card>
+                    </section>
+                    <!-- Interests and Hobbies -->
+                    <section class="profile-form-wrap">
+                        <mat-card-title>Paypal Account details</mat-card-title>
+                        <mat-card>
+                            <span class="row">
+                                <span class="col-lg-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Enter your Paypal ID</mat-label>
+                                        <input matInput formControlName="paypal_id">
+                                    </mat-form-field>
+                                </span>
+                            </span>
+                        </mat-card>
+                    </section>
+                    <!-- Paypal Account details -->
+
+                    <!-- end password section -->
+                    <span class="btn-action">
+                        <button class="btn-primary" mat-button (click)="saveProfile()">Save</button>
+                        <button class="btn-outline" mat-button>Cancel</button>
+                    </span>
+                </form>
+            </mat-tab>
+            <mat-tab label="Password">
+                <form [formGroup]="form">
+
+                    <section class="profile-form-wrap">
+                        <!-- <mat-card-title>Password</mat-card-title> -->
+                        <mat-card>
+                            <span class="row">
+                                <span class="col-lg-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Current password</mat-label>
+                                        <input matInput [type]="currentPass ? 'password' : 'text'"
+                                            formControlName="currentpassword">
+                                        <button mat-icon-button matSuffix (click)="currentPass = !currentPass"
+                                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="currentPass">
+                                            <mat-icon>{{currentPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        </button>
+                                    </mat-form-field>
+                                    <p class=""></p>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline"class="pass_multi_hints">
+                                        <mat-label>New password</mat-label>
+                                        <input matInput [type]="newPass ? 'password' : 'text'"
+                                            formControlName="newpassword">
+                                        <button mat-icon-button matSuffix (click)="newPass = !newPass"
+                                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="newPass">
+                                            <mat-icon>{{newPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        </button>
+                                        <mat-error
+                                        *ngIf="form.controls['newpassword'].hasError('required') && form.controls['newpassword'].touched">
+                                        Please enter a password.
+                                    </mat-error>
+                                    <mat-error
+                                        *ngIf="form.controls['newpassword'].hasError('pattern') && form.controls['newpassword'].touched">
+                                        Password with at least 8 characters, including special characters. Mix letters, numbers, and symbols to enhance your security.
+                                    </mat-error>
+                                    </mat-form-field>
+                                </span>
+                                <span class="col-lg-6 col-md-6 col-sm-12">
+                                    <mat-form-field appearance="outline" class="pass_multi_hints">
+                                        <mat-label>Confirm password</mat-label>
+                                        <input matInput [type]="confirmPass ? 'password' : 'text'"
+                                            formControlName="confirmpassword">
+                                        <button mat-icon-button matSuffix (click)="confirmPass = !confirmPass"
+                                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="currentPass">
+                                            <mat-icon>{{confirmPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        </button>
+                                        
+                                    </mat-form-field>
+                                    <mat-error *ngIf="form.get('confirmpassword')?.touched && form.hasError('passwordMismatch')">
+                                        Passwords do not match
+                                    </mat-error>
+                                </span>
+                            </span>
+                        </mat-card>
+                    </section>
+                    <!-- end password section -->
+                    <span class="btn-action">
+                        <button class="btn-primary" mat-button (click)="savepass()">Save</button>
+                        <button class="btn-outline" mat-button>Cancel</button>
+                    </span>
+                </form>
+
+            </mat-tab>
+
+        </mat-tab-group>
+
+
+    </main>
+</app-side-nav>

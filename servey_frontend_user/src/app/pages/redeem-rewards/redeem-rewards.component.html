@@ -1,0 +1,29 @@
+<app-side-nav>
+    <main class="dashboard-wrap redeem-rewards">
+        <mat-card class="title-card">
+            <mat-card-title>Redeem Rewards</mat-card-title>
+            <mat-nav-list class="bredcam-nav">
+                <a mat-list-item [activated]="isActive" [routerLink]="['/survey-listing']">Home /</a>
+                <a mat-list-item [activated]="isActive" [routerLink]="['/manage-rewards']">Manage rewards /</a>
+                <a mat-list-item>Redeem Rewards</a>
+            </mat-nav-list>
+        </mat-card>
+
+        <section class="redeem-rewards-wrap">
+            <mat-card-header class="reward-header">
+                <mat-card-title>Reward Point Balance:</mat-card-title>
+                <mat-card-subtitle>${{getreward}}</mat-card-subtitle>
+            </mat-card-header>
+
+            <form class="reedem-form">
+                <mat-card-title>Reward Point Balance:</mat-card-title>
+                <mat-form-field appearance="outline" class="reedem-field">
+                    <mat-label>Enter number of points to redeem</mat-label>
+                    <input type="text" matInput />
+                </mat-form-field>
+                <button class="btn-primary" mat-button [routerLink]="['/redeem-rewards']">Redeem
+                    Rewards</button>
+            </form>
+        </section>
+    </main>
+</app-side-nav>

@@ -1,0 +1,82 @@
+<app-side-nav>
+
+    <main class="dashboard-wrap survey-list-wrap">
+        <mat-card class="title-card">
+            <mat-card-title>Home</mat-card-title>
+            <mat-nav-list class="bredcam-nav">
+                <a mat-list-item [activated]="isActive">Home /</a>
+                <a mat-list-item> Dashboard</a>
+            </mat-nav-list>
+        </mat-card>
+
+        <section class="card-list">
+            <span class="card-listfilter">
+                <mat-card-title>Survey list</mat-card-title>
+
+
+                <button class="sortBy" mat-button [matMenuTriggerFor]="animals">
+                    Sort By </button>
+                <mat-menu #animals="matMenu">
+                    <!-- <span *ngFor="let option of filterOptions">
+                        <button mat-menu-item >{{option}}</button>
+                    </span> -->
+                    <button mat-menu-item (click)="filterList('Latest')">Latest</button>
+
+                    <button mat-menu-item (click)="filterList('Oldest')">Oldest</button>
+
+                    <button [matMenuTriggerFor]="vertebrates" mat-menu-item>Tag</button>
+                </mat-menu>
+
+                <mat-menu #vertebrates="matMenu" yPosition="above">
+                    <button mat-menu-item *ngFor="let item of tagCategory" (click)="tagWiseFilter(item)">{{item}}</button>
+
+                </mat-menu>
+
+            </span>
+            <span class="row">
+                <span class="col-sm-12 col-md-6 col-lg-4 mb-25" *ngFor="let item of FilterListArray | paginate:{
+                    itemsPerPage:6,
+                    currentPage:startLinkIndex2,
+                    totalItems:totalRows2
+                  }">
+                    <mat-card class="survey-card">
+                        <!-- <img mat-card-image src="../../../assets/img/surIMG.jpg" alt="Photo of a Shiba Inu"> -->
+                        <img mat-card-image src="{{item.image}}" alt="Photo of a Shiba Inu">
+                        <mat-card-content>
+                            <!-- <p>Entertainment Preference</p> -->
+                            <p>{{item.title}}</p>
+                            <p>
+                                Survey Type:
+                                <span>
+                                    <details>{{item.survey_description}}</details>
+                                </span>
+                            </p>
+                            <p>Tag/Category: <span>{{item.survey_tag_id.tag_name}}</span></p>
+                            <p>Start Date & Time:<span>{{item.start_date_time}}</span></p>
+                            <p>Ending Date & Time:<span>{{item.end_date_time}}</span></p>
+                            <p>Expected Time to Complete (Min):<span>{{item.complete_time}}</span></p>
+                            <!-- <div *ngFor="let alllistItem of item.participants_list">
+                                <p>{{alllistItem.user_id}}</p>
+                            
+                                <button mat-button class="btn-primary" *ngIf="alllistItem.user_id != userid" (click)="Onparticipate(item)">Participate</button>
+                            <a mat-button class="btn-primary" href="{{item.url}}" target="_blank" *ngIf="alllistItem.user_id==userid " > Go to link</a>
+                              </div> -->
+                          
+
+                              <div >
+                                <ng-container>
+                                  <button mat-button class="btn-primary" *ngIf="!hasUserParticipated(item)" (click)="Onparticipate(item)">Participate</button>
+                                  <a mat-button class="btn-primary" [href]="item.url" target="_blank" *ngIf="hasUserParticipated(item)">Go to link</a>
+                                </ng-container>
+                              </div>
+                        </mat-card-content>
+
+                    </mat-card>
+                </span>
+
+            </span>
+        </section>
+        <pagination-controls class="pagination-color"  (pageChange)="startLinkIndex2 = $event"></pagination-controls>
+    </main>
+
+</app-side-nav>

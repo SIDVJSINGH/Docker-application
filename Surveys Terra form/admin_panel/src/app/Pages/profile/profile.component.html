@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet" />
+<div class="container">
+    <h2 style="text-align: left;">Edit Admin Profile</h2>
+
+    <div class="card">
+        <!-- <h3 style="text-align: center;" class="text-infoss">Personal Info</h3> -->
+        <br>
+        <hr>
+        <div class="row">
+            <!-- left column -->
+
+            <div class="col-md-3">
+                <form [formGroup]="profileForm" role="form">
+                    <div class="text-center">
+                        <label class="hoverable" for="fileInput" id="icon">
+                            <img  [src]="url?url:element||imageUrl1" alt="#"  class="avatar img-circle img-thumbnail">
+                           
+                            <!-- <img class="avatar img-circle img-thumbnail" *ngIf="profile_image!=''" [src]="profile_image">
+                            <img class="avatar img-circle img-thumbnail" *ngIf="profile_image==''" src="/assets/logo/defaultlogo5.png" alt=""> -->
+
+                            <!-- <img class="avatar img-circle img-thumbnail" src="/assets/logo/defaultlogo5.png"> -->
+
+                            <i class="fas fa-pencil-alt" style="position: absolute; right: 20px; top: 10px; "></i>
+                            <br><br>
+                            <input type='file' hidden id="fileInput" (change)="image1($event)">
+                        </label>
+                      
+                    </div>
+                </form>
+            </div>
+
+            <!-- edit form column -->
+
+            <div class="col-md-9 personal-info">
+
+                <!-- <h3 class="text-center">Personal Info</h3> -->
+
+                <form class="form-horizontal" [formGroup]="profileForm" role="form">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">First Name:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" formControlName="first_name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Last Name:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" formControlName="last_name">
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label class="col-lg-3 control-label">Mobile:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" readonly type="text" formControlName="phone">
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Email:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" readonly type="text" formControlName="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Gender:</label>
+                        <div class="col-lg-8" style="margin-top: 5px;">
+                            <input type="radio" #r1 formControlName="gender" value="Male">&nbsp;Male&nbsp;
+                            <input type="radio" #r2 formControlName="gender" value="Female">&nbsp;Female
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Address:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" formControlName="address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="example-button-row">
+                            <button type="button" mat-button color="primary" class="btn-save "
+                                (click)="onUpdate(r1,r2)">SAVE</button>&nbsp;
+                            <button type="button" mat-button color="accent" class="btn-cancel "
+                                [routerLink]="['/main/dashboard']">CANCEL</button>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

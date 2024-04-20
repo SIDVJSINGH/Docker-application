@@ -1,0 +1,48 @@
+<!-- dialog.component.html -->
+<h2 mat-dialog-title>Update Rewards</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form" class="mt-2">
+  
+
+    <mat-form-field class="full-width " appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status"  name="status">
+          <mat-option value="completed">Completed</mat-option>
+          <mat-option value="ongoing">Ongoing</mat-option>
+          <mat-option value="rejected">Rejected</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="full-width " appearance="outline">
+        <mat-label>Send Rewards</mat-label>
+          <input type="number" matInput formControlName="reward_earned_value"  />
+        
+        </mat-form-field>
+     
+   
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+
+
+
+
+  <div class="example-button-row" >
+    <button
+    type="button"
+  
+    mat-button
+    [disabled]="form.invalid"
+      class="btn-save" (click)="onSubmit()">SAVE</button>
+  <button
+  type="button" 
+  mat-button
+
+  class="btn-cancel" 
+  (click)="onCancel()">CANCEL</button>
+
+  
+  </div>
+</mat-dialog-actions>

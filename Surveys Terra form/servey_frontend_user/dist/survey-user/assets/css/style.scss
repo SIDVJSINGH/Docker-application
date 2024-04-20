@@ -1,0 +1,1389 @@
+@import "./color-platte.scss";
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif !important;
+}
+// .container {
+//   max-width: 1110px;
+//   width: 100%;
+// }
+.mb-2 {
+  margin-bottom: 2px !important;
+}
+.mb-12 {
+  margin-bottom: 12px !important;
+}
+.mb-16 {
+  margin-bottom: 16px !important;
+}
+.mb-22 {
+  margin-bottom: 22px !important;
+}
+.mb-25 {
+  margin-bottom: 25px !important;
+}
+.ml-16 {
+  margin-left: 16px !important;
+}
+.w-100 {
+  width: 100%;
+}
+.pl-0 {
+  padding-left: 0 !important;
+}
+.no-wrap {
+  white-space: nowrap;
+}
+.table-responsive {
+  width: 100%;
+  overflow: auto;
+  display: block;
+}
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+.btn-primary {
+  background: $primary-color !important;
+  border-radius: 1.46875rem !important;
+  border: 1px solid $primary-color !important;
+  color: $btn-txt !important;
+  min-width: 7.25rem !important;
+  font-family: "poppins", sans-serif;
+  padding: 0 20px !important;
+}
+.btn-outline {
+  background: transparent !important;
+  border-radius: 1.46875rem !important;
+  border: 1px solid $font-lite !important;
+  color: $font-lite !important;
+  min-width: 7.25rem !important;
+  font-family: "poppins", sans-serif;
+  padding: 0 20px !important;
+}
+
+//start header & footer css
+.head_wrp {
+  padding: 1.5rem 3.125rem;
+  background: $text-white;
+  .header {
+    background: transparent;
+    padding: 0;
+    height: auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .hamMenu {
+      display: none;
+      min-width: inherit;
+    }
+  }
+
+  .logo_wrp {
+    display: inline-flex;
+    align-items: center;
+    width: 251px;
+  }
+
+  .nav-list {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    padding: 0;
+
+    .mdc-list-item {
+      width: auto;
+      border-radius: 30px;
+      &:hover {
+        .mdc-list-item__primary-text {
+          color: $primary-color;
+          font-family: "poppins", sans-serif;
+        }
+      }
+      .mdc-list-item__content {
+        text-overflow: inherit;
+        white-space: nowrap;
+        overflow: inherit;
+        text-align: center;
+      }
+
+      .mdc-list-item__primary-text {
+        text-overflow: inherit;
+        white-space: nowrap;
+        overflow: inherit;
+        text-decoration: none;
+        font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+        font-family: "poppins", sans-serif;
+      }
+
+      .active-link {
+        color: $primary-color;
+      }
+    }
+
+    .login {
+      border: 1px solid $primary-color;
+      margin-left: 1rem;
+      min-width: 95px;
+      .mdc-list-item__primary-text {
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+.fixedhead {
+  background: $text-white;
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  box-shadow: 0px 20px 80px rgba(143, 143, 143, 0.25);
+}
+
+.footer-wrp {
+  background: linear-gradient(0deg, transparent 60%, $text-white);
+  .link-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-shadow: none;
+    text-align: left;
+    background: transparent;
+    border-radius: 0;
+    .mat-mdc-list {
+      .ql-title {
+        font-size: 16px;
+        line-height: 22px;
+        font-family: "GothamBold", sans-serif;
+        color: $secondary-color;
+        position: relative;
+        padding-bottom: 12px;
+        margin-bottom: 30px;
+
+        &::before {
+          content: "";
+          height: 2px;
+          width: 20px;
+          background: $primary-color;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          border-radius: 2px;
+        }
+
+        &::after {
+          content: "";
+          height: 2px;
+          width: 11px;
+          background: $primary-color;
+          position: absolute;
+          left: 25px;
+          bottom: 0;
+          border-radius: 2px;
+        }
+      }
+
+      h4 {
+        margin: 16px 0;
+        font-family: "GothamBold", sans-serif;
+
+        line-height: 22px;
+        font-size: 16px;
+      }
+
+      &:first-child {
+        max-width: 370px;
+      }
+
+      p {
+        font-size: 16px;
+        font-family: "EuropaRegular", sans-serif;
+      }
+
+      .more_about {
+        color: #1a1f4a;
+        text-decoration: none;
+        font-size: 17px;
+        line-height: 34px;
+        font-family: "NunitoBold", sans-serif;
+        display: inline-flex;
+        align-items: center;
+
+        svg {
+          margin-left: 8px;
+        }
+      }
+
+      .mat-mdc-list-item {
+        padding: 0;
+        overflow: inherit;
+        height: auto;
+        margin: 10px 0;
+
+        a {
+          text-decoration: none;
+          font-size: 16px;
+          line-height: 18px;
+          font-family: "EuropaRegular", sans-serif;
+
+          &:hover {
+            color: $primary-color;
+          }
+        }
+
+        .tax-agent {
+          margin: 16px 0;
+          font-family: "GothamBold", sans-serif;
+
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    border-radius: 0;
+    box-shadow: none;
+    background-color: #495867;
+    .txt-copyright {
+      text-align: center;
+      margin-bottom: 0;
+      padding: 1.5rem;
+      color: $text-white;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.5625rem;
+    }
+    .mat-mdc-card {
+      border-radius: 0;
+      box-shadow: none;
+      background: none;
+    }
+
+    .crt-content {
+      background-color: #495867;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 40px 50px;
+      border-bottom: 1px solid rgba($text-white, 0.5);
+      .social {
+        display: flex;
+        align-items: center;
+        a {
+          padding: 0 5px;
+          &:last-child {
+            padding-right: 0;
+          }
+        }
+      }
+
+      .mat-mdc-list {
+        display: flex;
+        flex-wrap: wrap;
+        .mat-mdc-list-item {
+          width: auto;
+          padding: 0 1rem;
+          height: auto;
+          &:first-child {
+            padding-left: 0;
+          }
+          .mdc-list-item__content,
+          .mdc-list-item__primary-text {
+            overflow: inherit;
+            text-overflow: inherit;
+            width: auto;
+            a {
+              text-decoration: none;
+              color: $text-white;
+              font-size: 1rem;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// login
+.log_wrap {
+  // background: $bg-color url("../img/loginBg.png") no-repeat 8% bottom;
+  background: url("../img/bg_new.jpg");
+  // background: $bg-color;
+  padding: 60px 50px 109px 50px;
+  padding: 60px 50px 0px 50px;
+  // background-size: 50%;
+
+  .inner-wrap {
+    flex-direction: row;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    background: transparent;
+    justify-content: space-between;
+    .log-left {
+      padding-right: 4rem;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      .bannerImage {
+        margin: auto auto 0;
+        max-width: 1000px;
+        display: block;
+        img {
+          margin-top: auto;
+          display: block;
+        }
+      }
+      .wlcome-txt {
+        //color: #385723;
+        color: white;
+        font-size: 3rem;
+        line-height: 4.25rem;
+        font-style: normal;
+        font-weight: 600;
+        font-family: "poppins", sans-serif;
+        margin-bottom: 1rem;
+        text-align: center;
+        span {
+          color: #ffc20a;
+          display: block;
+          em {
+            color: #385723;
+          }
+        }
+      }
+      .wlcome-subtxt {
+        color: $font-lite;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        font-family: "poppins", sans-serif;
+      }
+    }
+    .log-right {
+      padding-bottom: 4rem;
+      .login-form {
+        background: $text-white;
+        padding: 4.375rem 2.25rem 3.75rem 2.25rem;
+        border-radius: 0.625rem;
+        width: 540px;
+        .forget-password {
+          color: $font-lite;
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          text-decoration: none;
+          font-family: "poppins", sans-serif;
+        }
+        .mat-mdc-card-title {
+          color: $secondary-color;
+          font-size: 1.25rem;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          margin-bottom: 1rem;
+          font-family: "poppins", sans-serif;
+        }
+        .mat-mdc-card-subtitle {
+          color: $font-lite;
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          font-family: "poppins", sans-serif;
+          margin-bottom: 3.125rem;
+        }
+        .mat-mdc-form-field {
+          width: 100%;
+        }
+        .btn-act {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 1.25rem;
+
+          .btn-primary {
+            height: 2.5625rem;
+            font-family: "poppins", sans-serif;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+          }
+        }
+        .account-txt {
+          margin-top: 3rem;
+          margin-bottom: 0;
+          text-align: center;
+          a {
+            text-decoration: none;
+            color: $primary-color;
+            font-weight: 600;
+          }
+        }
+      }
+      .progress-withvalue {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.75rem;
+        label {
+          margin-bottom: 0;
+          color: $font-lite;
+          font-family: "poppins", sans-serif;
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          span {
+            color: $primary-color;
+          }
+        }
+        .progres-wrap {
+          display: flex;
+          gap: 0.375rem;
+          max-width: 225px;
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+.mat-mdc-form-field {
+  .mdc-text-field--outlined {
+    --mdc-outlined-text-field-container-shape: 10px;
+    
+    
+    .mat-mdc-form-field-infix {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+  }
+  .mat-mdc-text-field-wrapper {
+    height: 47px;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: "poppins", sans-serif;
+    .mat-mdc-form-field-flex {
+      .mat-mdc-form-field-infix {
+        .mat-mdc-select-arrow {
+          background: url("../img/dropdownIcon.png") no-repeat center center;
+          width: 14px;
+          height: 8px;
+          svg {
+            display: none;
+          }
+        }
+      }
+      .mat-mdc-floating-label {
+        top: 21px;
+        mat-label {
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          font-family: "poppins", sans-serif;
+        }
+      }
+    }
+  }
+  .mat-mdc-floating-label,
+  .mdc-text-field__input {
+    color: $font-lite;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: "poppins", sans-serif;
+  }
+  .mdc-icon-button {
+    padding: 0.7rem 0.75rem;
+    color: $font-lite;
+    margin-top: -0.5rem;
+  }
+}
+.forgotpass_wrp {
+  background-image: url("../img/forgotpassBg.png");
+}
+.signup-wrap {
+  background: $bg-color url("../img/half-shape.png") no-repeat left bottom;
+  padding: 40px 0px 105px;
+  overflow: hidden;
+  .container {
+    max-width: 1110px;
+    width: 100%;
+  }
+  .signup-in-wrap {
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    position: relative;
+    &::after {
+      content: "";
+      background: url("../img/circle-shape.png") no-repeat top right;
+      width: 217px;
+      height: 217px;
+      display: inline-block;
+      position: absolute;
+      top: 1.875rem;
+      left: 89%;
+      z-index: 1;
+    }
+    &::before {
+      content: "";
+      display: block;
+      width: 11.625rem;
+      height: 11.625rem;
+      flex-shrink: 0;
+      background: rgba(#000000, 0.5);
+      filter: blur(145px);
+      position: absolute;
+      border-radius: 50%;
+      right: -85px;
+      top: 35%;
+    }
+    
+    .mat-mdc-card-title {
+      color: $secondary-color;
+      font-family: "poppins", sans-serif;
+      font-size: 1.875rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+    .mat-mdc-card-subtitle {
+      color: $font-lite;
+      text-align: center;
+      font-family: "Poppins", sans-serif;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin-bottom: 2.25rem;
+    }
+    .registerForm {
+      padding: 2.813rem;
+      background: $text-white;
+      border-radius: 0.625rem;
+      position: relative;
+      z-index: 2;
+
+      .mat-mdc-form-field {
+        width: 100%;
+        .mat-mdc-select-arrow {
+          background: url("../img/dropdownIcon.png") no-repeat;
+          width: 12px;
+          height: 8px;
+          svg {
+            display: none;
+          }
+        }
+      }
+      .iti {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+      }
+      .countryfrom {
+        width: 100%;
+        padding: 0.9rem 4rem;
+        border: 1px solid rgba($font-lite, 0.3);
+        outline: none;
+        box-shadow: none;
+        border-radius: 0.625rem;
+        &:focus {
+          outline-color: rgba($primary-color, 1);
+        }
+      }
+      .phoneField {
+        .mat-mdc-form-field-infix {
+          .iti__selected-flag {
+            background: $text-white;
+          }
+          .iti__country-list {
+            max-width: 410px;
+          }
+        }
+      }
+      .address {
+        .mat-mdc-text-field-wrapper {
+          height: auto;
+          textarea {
+            height: 56px;
+            resize: none;
+          }
+        }
+      }
+      .image-upload-box {
+        border: 1px dashed $font-lite;
+        border-radius: 0.625rem;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        cursor: pointer;
+        margin-bottom: 1.5rem;
+        .mat-icon {
+          color: $font-lite;
+          width: 1.6875rem;
+          height: 1.6875rem;
+          font-size: 1.875rem;
+        }
+        &:hover {
+          border-color: $primary-color;
+          .mat-icon {
+            color: $primary-color;
+          }
+        }
+        p {
+          margin-bottom: 0;
+          color: $font-lite;
+          text-align: center;
+          font-family: "poppins", sans-serif;
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          margin-top: 1rem;
+        }
+      }
+      p {
+        margin-bottom: 2.5rem;
+        .mdc-label {
+          color: $font-lite;
+          font-family: "poppins", sans-serif;
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+      .varificationLabel {
+         color: $primary-color;
+          font-family: "poppins", sans-serif;
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          margin-bottom: 1rem;
+      }
+      .termsBtn {
+        color: $black;
+        font-family: "poppins", sans-serif;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        padding: 0 2px;
+        height: auto;
+        &:hover {
+          color: $primary-color;
+          background: none;
+        }
+      }
+      .btn-primary {
+        height: 2.5625rem;
+        font-family: "poppins", sans-serif;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+      .alredy-login {
+        margin-bottom: 0;
+        color: $font-lite;
+        font-family: "poppins", sans-serif;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-top: 3.75rem;
+        a {
+          color: $primary-color;
+          font-weight: 600;
+          text-decoration: none;
+        }
+      }
+      .btn-verify {
+        color: $primary-color;
+        background: rgba($primary-color, 0.2);
+        height: 2.938rem;
+        width: 100%;
+        border-radius: 0.625rem;
+        text-transform: uppercase;
+        &:disabled {
+          background: rgba($secondary-color, 0.1);
+          color: rgba($secondary-color, 0.2);
+        }
+      }
+      .contactInfo {
+        border: 1px solid rgba($font-lite, 0.3);
+        border-radius: 0.625rem; margin-top: 0.5rem;
+        legend {
+          font-family: "poppins", sans-serif;
+          font-size: 0.75rem;
+          color: $font-lite;
+          margin-bottom: 1rem;
+        }
+      }
+      
+      .mat-mdc-form-field-error{
+        line-height: 0.875rem;
+      }
+    }
+  }
+}
+.pass_multi_hints{
+  .mat-mdc-form-field-error-wrapper{
+    position: inherit;margin-top: 0.25rem;
+  }
+  .mat-mdc-form-field-bottom-align::before{
+    display: none;
+  }
+}
+.email_succes_box{
+  max-width: 300px;
+  display: block;
+  background: linear-gradient(358deg, #003518, #00853e, #00642e, #002812);
+  text-align: center;
+  .btn-verify{
+    background: linear-gradient(45deg, #d59e48, #c79c2a);
+    overflow: hidden;
+    border-radius: 1.875rem;
+    border: 1px solid #fffda5;
+    color: red;
+
+  }
+}
+.mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after,
+.mat-primary
+  .mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-minimal::after {
+  color: $primary-color;
+}
+.side-nav-wrap {
+  .side-nav {
+    .active-link {
+      .mdc-list-item__primary-text {
+        color: $btn-txt;
+      }
+    }
+    .delete-btn{
+      .mdc-list-item__primary-text{
+        color: rgb(238, 19, 19);
+      }
+      
+      
+    }
+  }
+}
+.dashboard-wrap {
+  .title-card {
+    padding: 4.5rem 2.5rem;
+    padding-right: 50%;
+    box-shadow: none;
+    border-radius: 0.625rem;
+    background: $text-white url("../img/surveylistingBg.png") no-repeat right
+      center;
+    background-size: contain;
+    .mat-mdc-card-title {
+      color: $secondary-color;
+      font-family: "poppins", sans-serif;
+      font-size: 1.875rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+    .bredcam-nav {
+      display: flex;
+      padding: 0;
+      .mat-mdc-list-item {
+        padding: 0;
+        height: auto;
+        width: auto;
+        margin-right: 0.5rem;
+        cursor: initial;
+        &:last-child {
+          margin-right: 0;
+        }
+        .mdc-list-item__primary-text {
+          color: $secondary-color;
+          font-family: "poppins", sans-serif;
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+      .mdc-list-item--activated {
+        cursor: pointer;
+        .mdc-list-item__primary-text {
+          color: $breadcam-color;
+        }
+      }
+    }
+  }
+  .card-list {
+    margin-top: 2.5rem;
+    .card-listfilter {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      .sortBy {
+        border: 1px solid $font-lite;
+        border-radius: 1.875rem;
+        color: $font-lite;
+        font-family: "poppins", sans-serif;
+        font-size: 0.875rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        min-width: 7rem;
+        height: 2.25rem;
+      }
+
+      .mat-mdc-card-title {
+        color: $font-lite;
+        font-family: "poppins", sans-serif;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-right: 1rem;
+      }
+      .mat-mdc-form-field {
+        .mat-mdc-text-field-wrapper {
+          height: 30px;
+          --mdc-outlined-text-field-container-shape: 30px;
+          padding: 0 1rem;
+          .mat-mdc-form-field-flex {
+            .mat-mdc-form-field-infix {
+              padding-top: 2px;
+              padding-bottom: 2px;
+              min-height: inherit;
+              width: 165px;
+              .mat-mdc-select-value-text {
+                color: $font-lite;
+                font-family: "poppins", sans-serif;
+                font-size: 0.8125rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+              }
+            }
+            .mat-mdc-floating-label {
+              top: 14px;
+              color: $font-lite;
+              font-family: "poppins", sans-serif;
+              font-size: 0.8125rem;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .survey-card {
+    border-radius: 0.625rem;
+    box-shadow: none;
+    .mdc-card__media {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      object-position: center center;
+    }
+    .mat-mdc-card-content {
+      padding: 1.125rem;
+      p {
+        color: $secondary-color;
+        font-family: "poppins", sans-serif;
+        font-size: 0.8125rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-bottom: 1rem;
+        span {
+          color: $font-lite;
+        }
+      }
+    }
+    .btn-primary {
+      margin-top: 0.563rem;
+      width: 100%;
+      background: $text-white !important;
+      color: $primary-color !important;
+      font-family: "poppins", sans-serif;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      height: 40px;
+      &:hover {
+        background: $primary-color !important;
+        color: $btn-txt !important;
+      }
+    }
+  }
+}
+.manage-profile {
+  .title-card {
+    background: $text-white url("../img/manage-profilebg.png") no-repeat;
+    background-position: center right;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    margin-bottom: 2.875rem;
+  }
+
+  .profile-form-wrap {
+    margin-top: 2.125rem;
+    .mat-mdc-card-title {
+      color: $secondary-color;
+      font-family: "poppins", sans-serif;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      margin-bottom: 1rem;
+    }
+    .mat-mdc-card {
+      padding: 2.125rem 2.625rem 1rem;
+      border-radius: 0.625rem;
+      box-shadow: none;
+      .mat-mdc-form-field {
+        width: 100%;
+        .mat-datepicker-toggle {
+          .mat-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            img {
+              width: 1.188rem;
+              height: 1.188rem;
+            }
+          }
+        }
+      }
+      .prof-img-wrp {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        .avt-wrp {
+          width: 7.5rem;
+          position: relative;
+          img {
+            border: 0.25rem solid $breadcam-color;
+            width: 7.375rem;
+            height: 7.375rem;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center center;
+          }
+          .mdc-fab {
+            height: 2.063rem;
+            width: 2.063rem;
+            background: $btn-txt;
+            box-shadow: none;
+            position: absolute;
+            right: 0.375rem;
+            bottom: 0.375rem;
+          }
+        }
+        .avt-ins-cont {
+          flex: 1;
+          margin-left: 1.125rem;
+          p {
+            margin: 0;
+            color: $font-lite;
+            font-family: "poppins", sans-serif;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+          }
+        }
+      }
+    }
+  }
+  .btn-action {
+    margin-top: 2rem;
+    display: block;
+    .btn-outline {
+      margin-left: 1rem;
+    }
+  }
+  .mat-mdc-tab.mdc-tab.mdc-tab--active {
+    background: $primary-color;
+    border-radius: 1.875rem;
+    overflow: hidden;
+    .mdc-tab__text-label {
+      color: $btn-txt;
+    }
+  }
+}
+.manage-rewards {
+  .title-card {
+    background: $text-white url("../img/manage-rewards.png") no-repeat right
+      center;
+    margin-bottom: 2.875rem;
+  }
+  .manage-rewards-wrap {
+    .mat-mdc-card-title {
+      color: $secondary-color;
+      font-family: "poppins", sans-serif;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      margin-bottom: 1rem;
+    }
+    .dataTable {
+      border-radius: 0.625rem;
+      overflow: hidden;
+
+      th {
+        color: $secondary-color;
+        font-family: "poppins", sans-serif;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        &:nth-child(2) {
+          width: 240px;
+        }
+      }
+      td {
+        color: $font-lite;
+        text-align: center;
+        font-family: "poppins", sans-serif;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        &:nth-child(2) {
+          text-align: left;
+        }
+      }
+      .reward-earn {
+        text-transform: capitalize;
+      }
+      .completed {
+        text-transform: capitalize;
+        background: rgba($primary-color, 0.14);
+        .mdc-evolution-chip__text-label {
+          color: $primary-color;
+        }
+      }
+      .ongoing {
+        text-transform: capitalize;
+        background: rgba($ongoing-color, 0.14) !important;
+        .mdc-evolution-chip__text-label {
+          color: $btn-txt !important;
+        }
+      }
+      .rejected {
+        text-transform: capitalize;
+        background: rgba($danger-color, 0.14);
+        .mdc-evolution-chip__text-label {
+          color: $danger-color;
+        }
+      }
+    }
+    .mat-mdc-paginator-container {
+      color: $font-lite;
+      text-align: center;
+      font-family: "poppins", sans-serif;
+      font-size: 0.875rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      .mat-mdc-form-field {
+        .mat-mdc-text-field-wrapper {
+          height: auto;
+        }
+      }
+      .mat-mdc-paginator {
+        .mat-mdc-select-value {
+          color: $font-lite;
+          text-align: center;
+          font-family: "poppins", sans-serif;
+          font-size: 0.875rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+    }
+    .btn-primary {
+      margin-top: 2.5rem;
+    }
+  }
+}
+.redeem-rewards {
+  .title-card {
+    background: $text-white url("../img/redeemrewards_bg.png") no-repeat;
+    margin-bottom: 1rem;
+    background-position: center right;
+  }
+  .redeem-rewards-wrap {
+    background: $text-white;
+    border-radius: 0.625rem;
+    .mat-mdc-card-title {
+      color: $secondary-color;
+      font-family: "poppins", sans-serif;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+    .mat-mdc-card-subtitle {
+      color: $secondary-color;
+      font-family: "poppins", sans-serif;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+    .reward-header {
+      border-bottom: 1px solid $breadcam-color;
+      padding: 1.875rem 2.625rem;
+      .mat-mdc-card-header-text {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+    .reedem-form {
+      padding: 1.875rem 2.625rem;
+
+      .reedem-field {
+        width: 100%;
+        margin: 1rem 0;
+      }
+    }
+  }
+}
+.contact-us {
+  .container {
+    max-width: 80%;
+  }
+  .map-wrap {
+    background: rgba($secondary-color, 0.1);
+
+    margin-bottom: 7.5rem;
+    border-radius: 0;
+    box-shadow: none;
+    .banner_wrap {
+      background: rgba($text-white, 0.1) url("../img/surIMG.jpg") no-repeat;
+      background-size: cover;
+      .contact-us-title {
+        font-size: 3.75rem;
+        height: 23.75rem;
+        color: $text-white;
+        font-family: "poppins", sans-serif;
+        text-transform: uppercase;
+        font-weight: 400;
+        width: 100%;
+        background: linear-gradient(45deg, black, transparent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+  .cont-file-wrap {
+    flex-direction: row;
+    margin-bottom: 5rem;
+    box-shadow: none;
+    .cont-file-left {
+      background: $primary-color;
+      width: 50%;
+      box-sizing: border-box;
+      padding: 40px;
+      border-radius: 1rem 0 0 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      display: none;
+      .mat-mdc-card-title {
+        color: $text-white;
+        font-size: 25px;
+        line-height: 30px;
+        font-family: "poppins", sans-serif;
+        margin-bottom: 30px;
+      }
+      .cont-items {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        img {
+          background: $text-white;
+          padding: 8px;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          object-fit: contain;
+          object-position: center center;
+          margin-right: 12px;
+        }
+        label {
+          font-size: 1.125rem;
+          line-height: 1.75rem;
+          color: $text-white;
+          font-family: "poppins", sans-serif;
+        }
+      }
+      .shortDesc {
+        color: $text-white;
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+      }
+    }
+
+    .cont-file-right {
+      background: rgba($font-lite, 0.1);
+      box-sizing: border-box;
+      padding: 2.813rem;
+      width: 100%;
+      border: 1px solid rgba($font-lite, 0.1);
+      border-radius: 0 1rem 1rem 0;
+      border-radius: 1rem;
+      .mat-mdc-form-field {
+        width: 100%;
+        .mat-mdc-text-field-wrapper {
+          background: $text-white;
+          height: auto;
+          border-radius: 0.625rem;
+          .mdc-text-field__input {
+            font-size: 20px;
+            font-family: "poppins", sans-serif;
+            resize: none;
+          }
+        }
+      }
+      .btn-primary {
+        font-size: 1.25rem;
+        border-radius: 1.875rem !important;
+        height: 3.75rem;
+      }
+    }
+  }
+}
+.aboutaus_page {
+  .ab_banner {
+    background: url("../img/loginBg.png") no-repeat center center;
+    background-size: cover;
+    .inner-shade {
+      min-height: 200px;
+      background: linear-gradient(
+        45deg,
+        rgba($primary-color, 1) 50%,
+        transparent
+      );
+      border-radius: 0;
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .mat-mdc-card-title {
+        font-size: 3.5rem;
+        line-height: 4rem;
+        font-weight: 400;
+        color: $text-white;
+        text-transform: uppercase;
+      }
+    }
+  }
+  .our-team {
+    margin-bottom: 4rem;
+    margin-top: 3rem;
+    .container {
+      max-width: 90%;
+      display: block;
+    }
+    .about-content {
+      font-size: 1rem;
+      color: $font-lite;
+      margin-bottom: 1rem;
+      line-height: 1.75rem;
+    }
+    .mat-mdc-card {
+      flex-direction: row;
+      border-radius: 0;
+      box-shadow: none;
+      .mat-mdc-card-content {
+        padding-right: 3rem;
+      }
+    }
+  }
+}
+.m-title {
+  font-size: 1.25rem;
+  font-family: "poppins", sans-serif;
+}
+.terms-wrapper {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  .container {
+    max-width: 90%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  h2 {
+    font-size: 2rem;
+    line-height: 1.75rem;
+    color: $primary-color;
+    font-family: "poppins", sans-serif;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  h3 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: $secondary-color;
+    font-family: "poppins", sans-serif;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    font-size: 1rem;
+    line-height: 1.625rem;
+    color: $font-lite;
+    font-family: "poppins", sans-serif;
+    font-weight: 400;
+  }
+}
+/* styles.css or styles.scss */
+.custom-toast-container {
+  position: fixed;
+  top: 60%;
+  left: 50% ;
+ 
+  z-index: 9999;
+  transform: translate(-50%,-40%);
+}

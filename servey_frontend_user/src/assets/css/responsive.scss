@@ -1,0 +1,415 @@
+@media screen and (min-width: 1940px) {
+  .log_wrap {
+    background-size: 35%;
+  }
+  .log_wrap {
+    .inner-wrap {
+      .log-right {
+        .login-form {
+          width: 900px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1370px) {
+  .log_wrap {
+    .inner-wrap {
+      // .log-left {
+      //   .wlcome-txt {
+      //     font-size: 1.5rem;
+      //   }
+      // }
+
+      .log-right {
+        .login-form {
+          width: 475px;
+          padding: 3rem 2.25rem 2.75rem 2.25rem;
+          .mat-mdc-card-subtitle {
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+          }
+          .forget-password {
+            font-size: 0.875rem;
+          }
+          .account-txt {
+            margin-top: 4rem;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+  .manage-rewards {
+    .manage-rewards-wrap {
+      .dataTable {
+        th,
+        td {
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+  .dashboard-wrap {
+    .title-card {
+      padding-right: 30%;
+      .mat-mdc-card-title {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .contact-us {
+    .cont-file-wrap {
+      .cont-file-right {
+        .mat-mdc-form-field {
+          .mat-mdc-text-field-wrapper {
+            .mdc-text-field__input {
+              font-size: 1rem;
+            }
+          }
+        }
+        .btn-primary {
+          height: 3.25rem;
+          font-size: 1.125rem;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .log_wrap {
+    background-position: 8% bottom;
+
+    .inner-wrap {
+      .log-left {
+        .wlcome-txt {
+          font-size: 2.5rem;
+          line-height: 3.75rem;
+          br {
+            display: none;
+          }
+        }
+        .wlcome-subtxt {
+          br {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .signup-wrap {
+    .container {
+      max-width: 90%;
+    }
+  }
+  .dashboard-wrap {
+    .title-card {
+      background-position: 73% 0;
+      padding-right: 1rem;
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .head_wrp {
+    padding: 1.5rem 2rem;
+    .header {
+      .hamMenu {
+        display: inline-flex;
+        padding: 0 0.625rem;
+        .mat-icon {
+          margin: 0;
+        }
+      }
+    }
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      transition: ease-in-out 0.3s;
+      position: fixed;
+      z-index: 9999;
+      background: #fff;
+      height: calc(100vh - 76px);
+      left: -100%;
+      top: 76px;
+      .mdc-list-item {
+        margin: 0.5rem 0;
+      }
+    }
+    .open {
+      left: 0;
+    }
+  }
+  .fixedhead {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .footer-wrp {
+    .copyright {
+      .crt-content {
+        padding: 1.25rem;
+        .mat-mdc-list {
+          .mat-mdc-list-item {
+            padding: 0 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .log_wrap {
+    // background-size: 100%;
+    // padding-bottom: 60%;
+    .inner-wrap {
+      flex-direction: column;
+      .log-left {
+        margin-bottom: 3rem;
+        padding-right: 0;
+      }
+      .log-right {
+        .login-form {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .manage-rewards {
+    .manage-rewards-wrap {
+      .dataTable {
+        min-width: 900px;
+      }
+    }
+  }
+  .contact-us {
+    .container {
+      max-width: 90%;
+    }
+    .map-wrap {
+      margin-bottom: 4.375rem;
+    }
+    .cont-file-wrap {
+      flex-direction: column-reverse;
+      margin-bottom: 3rem;
+      .cont-file-left {
+        padding: 1.5rem;
+        width: 100%;
+        border-radius: 0 0 1rem 1rem;
+      }
+      .cont-file-right {
+        padding: 1.5rem;
+        width: 100%;
+        border-radius: 1rem 1rem 0 0;
+        border-radius: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sm-mb-16 {
+    margin-bottom: 1rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  .head_wrp {
+    padding: 1.25rem;
+    .logo_wrp {
+      width: 200px;
+    }
+  }
+  .footer-wrp {
+    .copyright {
+      .txt-copyright {
+        font-size: 0.875rem;
+      }
+      .crt-content {
+        flex-wrap: wrap;
+        .mat-mdc-list {
+          width: 100%;
+          .mat-mdc-list-item {
+            width: 100%;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba($font-lite, 0.1);
+          }
+        }
+      }
+    }
+  }
+  .log_wrap {
+    padding: 2rem 1.5rem 62% 1.5rem;
+    .inner-wrap {
+      .log-left {
+        .wlcome-txt {
+          font-size: 1.5rem;
+          line-height: 2.5rem;
+        }
+        .wlcome-subtxt {
+          font-size: 0.875rem;
+        }
+      }
+      .log-right {
+        .login-form {
+          padding-top: 2rem;
+        }
+      }
+    }
+  }
+
+  .dashboard-wrap {
+    .title-card {
+      background-position: 100% bottom;
+      padding: 2rem 1rem;
+      padding-bottom: 60%;
+      background-size: 210%;
+      .mat-mdc-card-title {
+        font-size: 1.125rem;
+      }
+      .bredcam-nav {
+        .mat-mdc-list-item {
+          .mdc-list-item__primary-text {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+  }
+  .manage-profile {
+    .profile-form-wrap {
+      .mat-mdc-card {
+        padding: 1.5rem 1.5rem 0.5rem;
+        .prof-img-wrp {
+          .avt-wrp {
+            width: 5rem;
+            img {
+              width: 5rem;
+              height: 5rem;
+            }
+            .mdc-fab {
+              height: 1.5rem;
+              width: 1.5rem;
+            }
+          }
+          .avt-ins-cont {
+            margin-left: 1rem;
+            p {
+              font-size: 0.875rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .redeem-rewards {
+    .redeem-rewards-wrap {
+      .reward-header {
+        padding: 1.5rem;
+      }
+    }
+  }
+  .contact-us {
+    .container {
+      max-width: 95%;
+    }
+    .map-wrap {
+      .banner_wrap {
+        .contact-us-title {
+          font-size: 2rem;
+          height: 10rem;
+        }
+      }
+    }
+    .cont-file-wrap {
+      .cont-file-left {
+        padding: 1rem;
+        .mat-mdc-card-title {
+          font-size: 1.125rem;
+          line-height: 1.5rem;
+          margin-bottom: 1.625rem;
+        }
+        .shortDesc {
+          font-size: 0.875rem;
+          line-height: 1.5rem;
+        }
+        .cont-items {
+          img {
+            padding: 0.25rem;
+            width: 2rem;
+            height: 2rem;
+          }
+          label {
+            font-size: 14px;
+          }
+        }
+      }
+      .cont-file-right {
+        padding: 1rem;
+        .mat-mdc-form-field {
+          .mat-mdc-text-field-wrapper {
+            .mdc-text-field__input {
+              font-size: 14px;
+            }
+          }
+        }
+        .btn-primary {
+          font-size: 16px;
+          height: 47px;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .aboutaus_page {
+    .ab_banner {
+      .inner-shade {
+        min-height: 10rem;
+        .mat-mdc-card-title {
+          font-size: 2rem;
+          line-height: 3rem;
+        }
+      }
+    }
+    .our-team {
+      .about-content {
+        font-size: 0.875rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 420px) {
+  .head_wrp {
+    .logo_wrp {
+      width: 175px;
+    }
+  }
+  .log_wrap {
+    .inner-wrap {
+      .log-right {
+        .login-form {
+          padding: 1.5rem;
+          .btn-act {
+            flex-wrap: wrap;
+          }
+        }
+      }
+    }
+  }
+  .dashboard-wrap {
+    .card-list {
+      .card-listfilter {
+        .mat-mdc-form-field {
+          .mat-mdc-text-field-wrapper {
+            .mat-mdc-form-field-flex {
+              .mat-mdc-form-field-infix {
+                width: 130px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

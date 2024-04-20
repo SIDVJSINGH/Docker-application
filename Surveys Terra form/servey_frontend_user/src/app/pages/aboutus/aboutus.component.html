@@ -1,0 +1,47 @@
+<app-common-template>
+    <main class="aboutaus_page">
+
+        <section class="ab_banner">
+            <mat-card class="inner-shade">
+                <mat-card-title>About us</mat-card-title>
+            </mat-card>
+        </section>
+
+        <section class="our-team">
+            <span class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <mat-card>
+                            <mat-card-content>
+                                <div class="about-content" [innerHTML]="aboutUsContent"></div>
+                                <mat-card-content *ngIf="aboutUsContent==''">
+                                <p class="about-content">Surveys Terra, we're pioneering a new era in survey platforms
+                                    where your voice and your data truly belong to you. Our
+                                    mission is to create a free, user-friendly space that doesn't just invite opinions
+                                    but also champions the idea of
+                                    personal data ownership.</p>
+                                <p class="about-content">As a member of our vibrant community, you're not just sharing
+                                    your thoughts; you're exercising control and ownership
+                                    over your data. This commitment to empowering our users is at the heart of
+                                    everything we do.
+                                </p>
+                                <p class="about-content">Our team is dedicated to pushing the boundaries of what a
+                                    survey platform can be, ensuring transparency, fairness, and
+                                    respect for personal data protection at every step. Join us at Surveys Terra where
+                                    your opinion and your data are yours,
+                                    always.
+                                </p>
+                            </mat-card-content>
+                        </mat-card-content>
+                            <img src="assets/img/aboutusImage.jpg" alt="aboutusImage" class="img-responsive" />
+                        </mat-card>
+                    </div>
+
+                </div>
+            </span>
+        </section>
+    </main>
+
+   
+
+</app-common-template>

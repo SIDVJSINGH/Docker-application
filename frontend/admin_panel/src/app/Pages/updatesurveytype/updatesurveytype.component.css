@@ -1,0 +1,18 @@
+.col-lg-3{
+    width: 10%;
+    margin-top: 5px;
+}
+.form-group1 .btn-save{
+    width: 120px;
+}
+.form-group1 .btn-cancel{
+    width: 120px;
+}
+.customwidth-right{
+    width: 85%;
+}
+.form-group1{
+    float: right;
+    right: 89px;
+    position: fixed;
+}

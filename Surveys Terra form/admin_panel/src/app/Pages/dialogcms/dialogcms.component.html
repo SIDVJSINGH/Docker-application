@@ -1,0 +1,39 @@
+<!-- dialog.component.html -->
+<h2 mat-dialog-title>ADD CMS</h2>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field class="full-width">
+      <input matInput formControlName="name" placeholder="name (lowercase only and no space allow)" />
+      <mat-error *ngIf="form.get('name')?.hasError('required')">Name is required</mat-error>
+      <mat-error *ngIf="form.get('name')?.hasError('pattern')">Name must contain only lowercase letters</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="title" placeholder="content title" />
+    </mat-form-field>
+
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Enter content here" formControlName="text" hidden>
+      <angular-editor formControlName="text" [config]="editorConfig"></angular-editor>
+
+
+
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+
+
+
+
+  <div class="example-button-row">
+    <button type="button" class="add-btn " mat-raised-button [disabled]="form.invalid" color="primary"
+      class="update_btn" (click)="onSubmit()">SAVE</button>
+    <button type="button" mat-raised-button color="accent" class="add-btn " (click)="onCancel()">CANCEL</button>
+
+
+  </div>
+</mat-dialog-actions>

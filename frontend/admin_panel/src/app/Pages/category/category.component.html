@@ -1,0 +1,181 @@
+<h2><b>Category Management</b></h2>
+
+<div class="example-button-row" style="float: right;">
+    <button type="button" mat-raised-button color="accent" data-bs-toggle="modal" data-bs-target="#exampleModal">+Create Category</button>
+  </div>
+  <br>
+  <br>
+  <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+  <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+  
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;"> Sl No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container>
+  
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;">Title</th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+          <ng-container matColumnDef="tag">
+            <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;">Tag/Category</th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+  
+          <!-- Weight Column -->
+          <ng-container matColumnDef="weight">
+              <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;">Created Date</th>
+              <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+          </ng-container>
+  
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="symbol">
+              <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;">EndDate</th>
+              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+          </ng-container>
+          <!-- <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;">Status</th>
+              <td mat-cell *matCellDef="let element" [ngClass]="{
+                'Active': element.status === 'Active',
+                'Inactive': element.status === 'Inactive',
+              }"> {{element.status}} </td>
+          </ng-container> -->
+  
+          <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef style="background-color: grey; color: white;"> Action </th>
+              <td mat-cell *matCellDef="let element">
+                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item (click)="onViewItem(element)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <!-- <mat-icon>dialpad</mat-icon> -->
+                        <span>View</span>
+                      </button>
+                      <button mat-menu-item >
+                        <!-- <mat-icon>voicemail</mat-icon> -->
+                        <span>Edit</span>
+                      </button>
+                      <button mat-menu-item>
+                        <!-- <mat-icon>notifications_off</mat-icon> -->
+                        <span>Delete</span>
+                      </button>
+                      
+                    </mat-menu>
+                    
+  
+              </td>
+          </ng-container>
+  
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+  </div>
+  
+
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <h2>Create Survey Form</h2>
+            
+                <form [formGroup]="updateForm">
+                    <div class="form-group">
+                        <label>Name:</label><br>
+                        <input type="text" class="form-control" formControlName="name" placeholder="enter the name">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button class="btn btn-md btn-primary" (click)="onUpdate()" style="float: right;">Update</button>
+                        &nbsp;
+                        <button class="btn btn-secondary" data-bs-dismiss="modal"  style="float: right; background-color:darkcyan">Close</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5> -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <section class="table table-responsive">
+
+          <table class="table table-striped table-hover table-bordered">
+
+            <tbody>
+              <tr>
+                <td>ID Number</td>
+                <td>{{userData.position}}</td>
+              </tr>
+              <!-- <tr>
+                <td>Status</td>
+                <td [ngClass]="{
+                  'Active': userData.status === 'Active',
+                  'Inactive': userData.status === 'Inactive',
+                }">{{userData.status}}</td>
+              </tr> -->
+              <tr>
+                <td>Tags/Categories Name</td>
+                <td>{{userData.name}}</td>
+              </tr>
+              <tr>
+                <td>Created Date</td>
+                <td>{{userData.weight}}</td>
+              </tr>
+              <tr>
+                <td>Last Updated date</td>
+                <td>{{userData.symbol}}</td>
+              </tr>
+              
+            </tbody>
+          </table>
+          
+        </section>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+  
+  

@@ -1,0 +1,30 @@
+.sidebar-hidden .sidebar {
+  display: none;
+}
+
+/* Style for the scrollable content */
+#layoutSidenav_content {
+  margin-left: 250px; /* Add space for the fixed sidebar */
+  padding: 20px;
+  overflow-y: auto; /* Allow scrolling in the content area */
+}
+.dropdown-item.active, .dropdown-item:active{
+background-color: transparent;
+color: black;
+}
+a{
+  cursor: pointer;
+}
+.active{
+  color: red; /* Change the color to your desired active link color */
+}
+/* app.component.css or your component-specific CSS file */
+.active-link-red {
+  color: red;
+}
+.active {
+  background-color:#5db3e9 !important;
+  color: red;
+  border-radius: 5px;
+
+}
